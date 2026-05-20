@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "backup": "bash scripts/pre-deploy.sh",
+    "deploy": "bash scripts/pre-deploy.sh && vercel --prod",
+    "setup-hooks": "bash scripts/install-hooks.sh"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

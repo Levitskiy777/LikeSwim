@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Automatically commits any uncommitted changes before every git push.
+# Install via: bash scripts/install-hooks.sh
+
+TIMESTAMP=$(date '+%Y-%m-%d %H:%M')
+
+# Check for any unstaged or staged changes
+if ! git diff --quiet || ! git diff --staged --quiet; then
+  echo "⚠️  Uncommitted changes detected. Auto-committing before push..."
+  git add -A
+  git commit -m "chore: auto-backup before push — $TIMESTAMP"
+  echo "✅ Auto-committed."
+fi
