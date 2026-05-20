@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://like-swim.com/sitemap.xml

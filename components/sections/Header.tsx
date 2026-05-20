@@ -13,6 +13,8 @@ const navLinks = [
   { href: "#methodology", label: "Методика" },
   { href: "#testimonials", label: "Отзывы" },
   { href: "#areas", label: "Районы" },
+  { href: "#pricing", label: "Стоимость" },
+  { href: "#faq", label: "FAQ" },
 ];
 
 export function Header() {
@@ -27,7 +29,7 @@ export function Header() {
 
   // Close mobile menu on resize to desktop
   useEffect(() => {
-    const onResize = () => { if (window.innerWidth >= 768) setMenuOpen(false); };
+    const onResize = () => { if (window.innerWidth >= 1024) setMenuOpen(false); };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
@@ -39,30 +41,30 @@ export function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#070c18]/90 backdrop-blur-md border-b border-white/5 py-3"
+            ? "bg-[#0d1a2e]/90 backdrop-blur-md border-b border-white/5 py-3"
             : "bg-transparent py-5"
         }`}
       >
-        <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-6 flex items-center gap-4">
           {/* Logo */}
-          <a href="#hero" className="group">
+          <a href="#hero" className="group shrink-0">
             <Image
-              src="/logo.png"
+              src="/logo_transparent.png"
               alt="LikeSwim — Школа плавания"
               width={48}
               height={48}
-              className="rounded-xl group-hover:scale-105 transition-transform duration-200"
+              className="group-hover:scale-105 transition-transform duration-200"
               priority
             />
           </a>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          {/* Desktop nav — centred, takes remaining space */}
+          <nav className="hidden xl:flex flex-1 justify-center items-center gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="px-3 py-2 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-all duration-200"
+                className="px-3 py-2 rounded-lg text-base text-slate-400 hover:text-white hover:bg-white/5 transition-all duration-200 whitespace-nowrap"
               >
                 {link.label}
               </a>
@@ -70,7 +72,7 @@ export function Header() {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden xl:flex shrink-0 items-center">
             <a
               href={WHATSAPP_URL}
               target="_blank"
@@ -82,11 +84,14 @@ export function Header() {
             </a>
           </div>
 
+          {/* Spacer on mobile so burger stays right */}
+          <div className="flex-1 xl:hidden" />
+
           {/* Mobile burger */}
           <button
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}
-            className="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-all duration-200"
+            className="xl:hidden shrink-0 p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-all duration-200"
           >
             {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -101,7 +106,7 @@ export function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-0 left-0 right-0 z-40 pt-20 pb-6 px-6 bg-[#070c18]/95 backdrop-blur-xl border-b border-white/5 md:hidden"
+            className="fixed top-0 left-0 right-0 z-40 pt-20 pb-6 px-6 bg-[#0d1a2e]/95 backdrop-blur-xl border-b border-white/5 xl:hidden"
           >
             <nav className="flex flex-col gap-1 mb-6">
               {navLinks.map((link, i) => (
@@ -139,7 +144,7 @@ export function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-30 md:hidden"
+            className="fixed inset-0 z-30 xl:hidden"
             onClick={() => setMenuOpen(false)}
           />
         )}

@@ -47,10 +47,10 @@ const achievements = [
   },
   {
     icon: Waves,
-    title: "Ученица — 2-е место Ironman 2019",
-    year: "2019",
+    title: "Член молодёжной сборной России",
+    year: "2006–2008",
     description:
-      "Варвара Зверькова, ученица Павла, завоевала серебро на соревнованиях Ironman 2019 года.",
+      "Входил в состав молодёжной национальной сборной России по плаванию.",
     accent: "from-sky-500/20 to-teal-600/10",
     iconColor: "text-sky-400",
     border: "hover:border-sky-500/20",
@@ -59,7 +59,7 @@ const achievements = [
 
 export function AchievementsSection() {
   return (
-    <section id="achievements" className="py-24 sm:py-32 bg-[#050a14]">
+    <section id="achievements" className="py-24 sm:py-32 bg-[#0b1828]">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
@@ -84,15 +84,33 @@ export function AchievementsSection() {
           </FadeIn>
         </div>
 
+        {/* Coaching stats */}
+        <FadeIn delay={0.15}>
+          <div className="flex flex-col sm:flex-row gap-6 mb-10">
+            {[
+              { value: "10+", label: "лет тренерского опыта" },
+              { value: "2000+", label: "учеников" },
+            ].map((stat) => (
+              <div
+                key={stat.value}
+                className="flex-1 flex items-center gap-5 p-6 rounded-2xl bg-white/[0.03] border border-white/5"
+              >
+                <p className="text-5xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent leading-none">
+                  {stat.value}
+                </p>
+                <p className="text-slate-400 text-lg leading-snug">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </FadeIn>
+
         {/* Cards grid */}
         <StaggerContainer className="grid sm:grid-cols-2 gap-6" staggerDelay={0.12}>
           {achievements.map((item, idx) => (
             <motion.div
               key={item.title}
               variants={staggerItem}
-              whileHover={{ y: -4, scale: 1.01 }}
-              transition={{ duration: 0.25 }}
-              className={`relative p-6 rounded-2xl bg-gradient-to-br ${item.accent} border border-white/5 ${item.border} transition-all duration-300 group overflow-hidden${idx === achievements.length - 1 && achievements.length % 2 !== 0 ? " sm:col-span-2 sm:max-w-[calc(50%-12px)]" : ""}`}
+              className={`relative p-6 rounded-2xl bg-gradient-to-br ${item.accent} border border-white/5 ${item.border} hover:-translate-y-1 hover:scale-[1.01] transition-all duration-250 group overflow-hidden${idx === achievements.length - 1 && achievements.length % 2 !== 0 ? " sm:col-span-2 sm:max-w-[calc(50%-12px)]" : ""}`}
             >
               {/* Year tag */}
               <span className="absolute top-4 right-4 text-xs font-mono text-slate-600 group-hover:text-slate-500 transition-colors">

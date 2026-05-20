@@ -6,52 +6,52 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Анна Петрова",
-    role: "Мама Максима, 7 лет",
+    name: "Мама Насти",
+    role: "",
     rating: 5,
-    text: "Отдали сына к Павлу в 5 лет — боялся воды, не хотел идти в бассейн. Уже через месяц плыл самостоятельно и сам просился на тренировки! Павел нашёл подход, объяснял терпеливо и с юмором. Рекомендую всем родителям.",
-    initials: "АП",
+    text: "Паш, ну ты для Насти намного больше чем тренер. Учитель, которого очень везет встретить по жизни! Безупречная техника в работе, человечность, отношение к детям и спортивная закалка. Побольше бы таких тренеров как ты!",
+    initials: "МН",
     gradient: "from-pink-500 to-rose-600",
   },
   {
-    name: "Дмитрий Соколов",
-    role: "Взрослый ученик, 34 года",
+    name: "Мария, мама Мирона",
+    role: "",
     rating: 5,
-    text: "Всегда хотел научиться плавать, но думал — уже поздно. Павел разубедил: за 2 месяца я освоил кроль и брасс. Методика чёткая, без лишней воды (в прямом смысле). Теперь плаваю по утрам — не могу представить жизнь без этого.",
-    initials: "ДС",
-    gradient: "from-blue-500 to-cyan-600",
-  },
-  {
-    name: "Марина Кузнецова",
-    role: "Мама Саши, 10 лет",
-    rating: 5,
-    text: "Дочь занимается у Павла уже полтора года. За это время поучаствовала в двух соревнованиях, заняла третье место в районных соревнованиях. Тренер всегда на связи, объясняет что и зачем — это очень важно для нас как родителей.",
-    initials: "МК",
+    text: "Каждое занятие было насыщенное и интересное. У Мирона реально повысилась уверенность в себе, он стал лучше держаться на воде. Я бы всем рекомендовала Вас как первого тренера!",
+    initials: "ММ",
     gradient: "from-violet-500 to-purple-600",
   },
   {
-    name: "Игорь Волков",
-    role: "Взрослый ученик, 42 года",
+    name: "voltsinger, Miami",
+    role: "",
     rating: 5,
-    text: "Пришёл восстанавливаться после травмы спины по рекомендации врача. Павел разработал программу реабилитационного плавания. Спина перестала беспокоить, и я по-настоящему полюбил бассейн. Профессионал с большой буквы.",
-    initials: "ИВ",
+    text: "The best swimming coach we've ever had, and likely will ever have. I am experiencing a deep sense of envy that Miami citizens get to work with you. Thank you for everything!",
+    initials: "VM",
+    gradient: "from-cyan-500 to-blue-600",
+  },
+  {
+    name: "elen_log12",
+    role: "",
+    rating: 5,
+    text: "Наши дети занимаются с лучшим тренером по плаванию. Бесконечное спасибо за доверие!",
+    initials: "EL",
     gradient: "from-teal-500 to-emerald-600",
   },
   {
-    name: "Светлана Орлова",
-    role: "Мама Кирилла, 5 лет",
+    name: "djindjit, Israel",
+    role: "",
     rating: 5,
-    text: "Сыну 5 лет, записались на детскую группу. Результат потрясающий — ребёнок научился держаться на воде и уже делает первые гребки. Атмосфера на занятиях очень дружелюбная, детки не боятся воды. Спасибо Павлу!",
-    initials: "СО",
-    gradient: "from-amber-500 to-orange-600",
+    text: "The smallest fish in da adult pool. Such success achieved largely due to his coach Paul. Ron so misses you!",
+    initials: "DJ",
+    gradient: "from-sky-500 to-blue-600",
   },
   {
-    name: "Наталья Белова",
-    role: "Взрослая ученица, 28 лет",
+    name: "Елена",
+    role: "",
     rating: 5,
-    text: "Давно хотела улучшить технику кроля — самостоятельно не получалось. За 10 занятий с Павлом всё встало на место. Объяснял подробно, снимал на видео для анализа, давал конкретные упражнения. Очень довольна результатом!",
-    initials: "НБ",
-    gradient: "from-sky-500 to-blue-600",
+    text: "Наша доча - задачка со звёздочкой, но мне очень приятно, что наш невербальный ребенок повторяет «Паша» и бежит на урок. Ждём вас в следующий раз!",
+    initials: "ЕЛ",
+    gradient: "from-amber-500 to-orange-600",
   },
 ];
 
@@ -70,7 +70,7 @@ function StarRating({ rating }: { rating: number }) {
 
 export function TestimonialsSection() {
   return (
-    <section id="testimonials" className="py-24 sm:py-32 bg-[#050a14]">
+    <section id="testimonials" className="py-24 sm:py-32 bg-[#0b1828]">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
@@ -103,9 +103,7 @@ export function TestimonialsSection() {
             <motion.div
               key={t.name}
               variants={staggerItem}
-              whileHover={{ y: -4, scale: 1.01 }}
-              transition={{ duration: 0.25 }}
-              className="relative p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/10 transition-all duration-300 group flex flex-col"
+              className="relative p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/10 hover:-translate-y-1 hover:scale-[1.01] transition-all duration-250 group flex flex-col"
             >
               {/* Quote icon */}
               <Quote className="w-8 h-8 text-white/5 group-hover:text-white/8 transition-colors mb-4 shrink-0" />
@@ -125,7 +123,7 @@ export function TestimonialsSection() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-white font-medium text-sm truncate">{t.name}</p>
-                  <p className="text-slate-600 text-xs truncate">{t.role}</p>
+                  {t.role && <p className="text-slate-600 text-xs truncate">{t.role}</p>}
                 </div>
                 <StarRating rating={t.rating} />
               </div>

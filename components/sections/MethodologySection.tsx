@@ -45,7 +45,7 @@ const steps = [
 
 export function MethodologySection() {
   return (
-    <section id="methodology" className="py-24 sm:py-32 bg-[#070c18]">
+    <section id="methodology" className="py-24 sm:py-32 bg-[#0d1a2e]">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="max-w-2xl mb-16">
@@ -64,8 +64,9 @@ export function MethodologySection() {
           </FadeIn>
           <FadeIn delay={0.2}>
             <p className="text-slate-500 text-lg leading-relaxed">
-              Авторская методика основана на 15 годах практики. Работает для детей
-              от 3 лет, подростков и взрослых — независимо от начального уровня.
+              Обучение через понимание тела и воды — не механическое повторение движений.
+              Психология, координация и уверенность в себе: прогресс заметен уже с первых занятий,
+              у детей от 3 лет, подростков и взрослых.
             </p>
           </FadeIn>
         </div>
@@ -76,27 +77,25 @@ export function MethodologySection() {
             <motion.div
               key={step.number}
               variants={staggerItem}
-              whileHover={{ y: -6 }}
-              transition={{ duration: 0.25 }}
-              className={`relative p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/10 shadow-xl ${step.glow} transition-all duration-300 group`}
+              className={`relative p-8 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/10 hover:-translate-y-1.5 shadow-xl ${step.glow} transition-all duration-250 group`}
             >
               {/* Number */}
-              <div className="flex items-start justify-between mb-5">
-                <span className="text-5xl font-bold text-white/5 group-hover:text-white/8 transition-colors font-mono leading-none select-none">
+              <div className="flex items-start justify-between mb-6">
+                <span className="text-7xl font-bold text-white/5 group-hover:text-white/8 transition-colors font-mono leading-none select-none">
                   {step.number}
                 </span>
-                <div className="p-2.5 rounded-xl bg-white/5 group-hover:bg-white/8 transition-colors">
-                  <step.icon className={`w-5 h-5 ${step.color}`} />
+                <div className="p-3 rounded-xl bg-white/5 group-hover:bg-white/8 transition-colors">
+                  <step.icon className={`w-6 h-6 ${step.color}`} />
                 </div>
               </div>
 
               {/* Connector line (hidden on last) */}
               {i < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-[38px] right-[-13px] w-6 h-px bg-white/5 z-10" />
+                <div className="hidden lg:block absolute top-[46px] right-[-13px] w-6 h-px bg-white/5 z-10" />
               )}
 
-              <h3 className="text-white font-semibold text-lg mb-3">{step.title}</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">{step.description}</p>
+              <h3 className="text-white font-bold text-xl mb-3">{step.title}</h3>
+              <p className="text-slate-400 text-base leading-relaxed">{step.description}</p>
             </motion.div>
           ))}
         </StaggerContainer>

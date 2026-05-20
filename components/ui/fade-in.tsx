@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface FadeInProps {
@@ -19,29 +18,45 @@ export function FadeIn({
   className,
   once = true,
 }: FadeInProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once, margin: "-60px" });
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
 
-  const variants = {
-    hidden: {
-      opacity: 0,
-      y: direction === "up" ? 40 : direction === "down" ? -40 : 0,
-      x: direction === "left" ? 40 : direction === "right" ? -40 : 0,
-    },
-    visible: { opacity: 1, y: 0, x: 0 },
-  };
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          if (once) observer.disconnect();
+        } else if (!once) {
+          setVisible(false);
+        }
+      },
+      { rootMargin: "-60px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [once]);
+
+  const translate =
+    direction === "up" ? "translateY(40px)" :
+    direction === "down" ? "translateY(-40px)" :
+    direction === "left" ? "translateX(40px)" :
+    direction === "right" ? "translateX(-40px)" : "none";
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      variants={variants}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      transition={{ duration: 0.7, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
       className={cn(className)}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "none" : translate,
+        transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`,
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -54,22 +69,29 @@ export function StaggerContainer({
   className?: string;
   staggerDelay?: number;
 }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "-60px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={{
-        visible: { transition: { staggerChildren: staggerDelay } },
-        hidden: {},
-      }}
-      className={cn(className)}
-    >
+    <div ref={ref} className={cn(className)} data-visible={visible} data-stagger={staggerDelay}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 

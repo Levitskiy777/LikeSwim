@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { FadeIn } from "@/components/ui/fade-in";
 import { MessageCircle, Phone } from "lucide-react";
 
@@ -9,40 +8,36 @@ const PHONE_NUMBER = "+1 (754) 292-8576";
 
 export function CTASection() {
   return (
-    <section id="cta" className="py-24 sm:py-32 bg-[#070c18]">
+    <section id="cta" className="py-24 sm:py-32 bg-[#0d1a2e]">
       <div className="max-w-4xl mx-auto px-6">
         <FadeIn>
-          <div className="relative rounded-3xl overflow-hidden border border-white/5">
+          <div className="relative rounded-3xl overflow-hidden border border-cyan-500/30 shadow-[0_0_80px_rgba(6,182,212,0.12)]">
             {/* Background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/50 via-[#070c18] to-blue-950/50" />
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/40 via-[#0a1628] to-blue-900/40" />
 
-            {/* Animated blobs */}
+            {/* Static blobs — CSS only, no JS animation */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-              <motion.div
-                animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.5, 0.3] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-16 -left-16 w-64 h-64 rounded-full bg-cyan-500/20 blur-[80px]"
-              />
-              <motion.div
-                animate={{ scale: [1, 1.4, 1], opacity: [0.2, 0.4, 0.2] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                className="absolute -bottom-16 -right-16 w-80 h-80 rounded-full bg-blue-600/20 blur-[100px]"
-              />
+              <div className="absolute -top-16 -left-16 w-64 h-64 rounded-full bg-cyan-500/20 blur-[80px]" />
+              <div className="absolute -bottom-16 -right-16 w-80 h-80 rounded-full bg-blue-600/20 blur-[100px]" />
             </div>
 
             {/* Content */}
             <div className="relative z-10 px-8 py-16 sm:px-16 text-center">
               <FadeIn delay={0.1}>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/20 bg-cyan-500/5 text-cyan-400 text-sm font-medium mb-8">
-                  Запись открыта
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-400/40 bg-cyan-500/10 text-cyan-300 text-sm font-semibold mb-8 shadow-[0_0_20px_rgba(6,182,212,0.2)]">
+                  ✦ Запись открыта
                 </div>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
-                  Готовы начать?{" "}
-                  <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                    Первое занятие со скидкой 50%
+                <h2 className="text-4xl sm:text-6xl font-bold text-white mb-6 leading-tight">
+                  Готовы начать?
+                  <br />
+                  <span className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
+                    Первое занятие —{" "}
+                    <span className="underline decoration-cyan-500/50 decoration-2 underline-offset-4">
+                      скидка 50%
+                    </span>
                   </span>
                 </h2>
               </FadeIn>
@@ -56,17 +51,15 @@ export function CTASection() {
 
               <FadeIn delay={0.4}>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                  <motion.a
+                  <a
                     href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.04 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold text-lg shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-shadow duration-300"
+                    className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold text-lg shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.04] active:scale-[0.97] transition-all duration-200"
                   >
                     <MessageCircle className="w-5 h-5 shrink-0" />
                     Написать в WhatsApp
-                  </motion.a>
+                  </a>
 
                   <a
                     href={`tel:${PHONE_NUMBER.replace(/\D/g, "")}`}

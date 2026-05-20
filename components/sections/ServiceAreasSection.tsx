@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { FadeIn, StaggerContainer } from "@/components/ui/fade-in";
+import { FadeIn } from "@/components/ui/fade-in";
 import { MapPin } from "lucide-react";
 
 const cities = [
@@ -33,7 +32,7 @@ const cities = [
 
 export function ServiceAreasSection() {
   return (
-    <section id="areas" className="py-24 sm:py-32 bg-[#070c18]">
+    <section id="areas" className="py-24 sm:py-32 bg-[#0d1a2e]">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-14">
@@ -59,22 +58,17 @@ export function ServiceAreasSection() {
           </FadeIn>
         </div>
 
-        {/* Cities grid */}
+        {/* Cities grid — CSS hover, no JS per-tag animation */}
         <FadeIn delay={0.15}>
           <div className="flex flex-wrap justify-center gap-3">
-            {cities.map((city, i) => (
-              <motion.div
+            {cities.map((city) => (
+              <div
                 key={city}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.35, delay: i * 0.03 }}
-                whileHover={{ scale: 1.05, y: -2 }}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] hover:bg-white/[0.07] hover:border-cyan-500/30 text-slate-400 hover:text-white text-sm font-medium transition-all duration-200 cursor-default"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] hover:bg-white/[0.07] hover:border-cyan-500/30 text-slate-400 hover:text-white hover:-translate-y-0.5 text-sm font-medium transition-all duration-200 cursor-default"
               >
                 <MapPin className="w-3 h-3 text-cyan-500/70 shrink-0" />
                 {city}
-              </motion.div>
+              </div>
             ))}
           </div>
         </FadeIn>
