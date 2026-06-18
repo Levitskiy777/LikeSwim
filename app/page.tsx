@@ -1,11 +1,13 @@
 import { HeroSection } from "@/components/sections/HeroSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { AchievementsSection } from "@/components/sections/AchievementsSection";
+import { PressSection } from "@/components/sections/PressSection";
 import { MethodologySection } from "@/components/sections/MethodologySection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { GallerySection } from "@/components/sections/GallerySection";
 import { ServiceAreasSection } from "@/components/sections/ServiceAreasSection";
 import { PricingSection } from "@/components/sections/PricingSection";
+import { OnlineCoachingSection } from "@/components/sections/OnlineCoachingSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { CTASection } from "@/components/sections/CTASection";
 import { Footer } from "@/components/sections/Footer";
@@ -62,11 +64,13 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <AchievementsSection />
+      <PressSection />
       <MethodologySection />
       <TestimonialsSection />
       <GallerySection />
       <ServiceAreasSection />
       <PricingSection />
+      <OnlineCoachingSection />
       <FAQSection />
       <CTASection />
       <Footer />

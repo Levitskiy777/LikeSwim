@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/sections/Header";
 import { MobileWhatsAppBar } from "@/components/ui/MobileWhatsAppBar";
+import { LanguageProvider } from "@/lib/language-context";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,10 +46,24 @@ export default function RootLayout({
       lang="ru"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col bg-[#0d1a2e] pb-[72px] xl:pb-0">
-        <Header />
-        {children}
-        <MobileWhatsAppBar />
+      <body className="min-h-full flex flex-col bg-[#1a3350] pb-[72px] xl:pb-0">
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-QL4DKQWMRQ"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-QL4DKQWMRQ');
+          `}
+        </Script>
+        <LanguageProvider>
+          <Header />
+          {children}
+          <MobileWhatsAppBar />
+        </LanguageProvider>
       </body>
     </html>
   );

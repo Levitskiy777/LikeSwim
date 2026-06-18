@@ -4,33 +4,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ChevronDown } from "lucide-react";
-
-const faqs = [
-  {
-    q: "Вы работаете с полными новичками?",
-    a: "Да, большинство моих учеников начинают с нуля. Первое занятие — это диагностика: я оцениваю уровень, страхи и цели, и строю программу именно под вас.",
-  },
-  {
-    q: "Вы приезжаете к частным бассейнам?",
-    a: "Да, я работаю у частных бассейнов в кондоминиумах и домах по всему Майами и Южной Флориде.",
-  },
-  {
-    q: "С какого возраста вы берёте детей?",
-    a: "Работаю с детьми от 3 лет. Для малышей — игровой формат, для детей постарше — техника и уверенность в воде.",
-  },
-  {
-    q: "Вы говорите по-русски?",
-    a: "Да, провожу тренировки на русском, иврите и английском языках.",
-  },
-  {
-    q: "Как быстро можно научиться плавать?",
-    a: "Большинство учеников чувствуют уверенность в воде уже после 3–5 занятий. Скорость прогресса зависит от регулярности и начального уровня.",
-  },
-  {
-    q: "Какое оборудование нужно?",
-    a: "Только купальник и желание учиться. Всё необходимое оборудование я привожу с собой.",
-  },
-];
+import { useLanguage } from "@/lib/language-context";
+import { translations } from "@/lib/translations";
 
 function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
   const [open, setOpen] = useState(false);
@@ -73,21 +48,24 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
 }
 
 export function FAQSection() {
+  const { lang } = useLanguage();
+  const t = translations[lang].faq;
+
   return (
-    <section id="faq" className="py-24 sm:py-32 bg-[#0d1a2e]">
+    <section id="faq" className="py-24 sm:py-32 bg-[#1a3350]">
       <div className="max-w-3xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-14">
           <FadeIn>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/20 bg-cyan-500/5 text-cyan-400 text-sm font-medium mb-6">
-              FAQ
+              {t.badge}
             </div>
           </FadeIn>
           <FadeIn delay={0.1}>
             <h2 className="text-4xl sm:text-5xl font-bold text-white leading-tight">
-              Часто задаваемые{" "}
+              {t.heading}{" "}
               <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                вопросы
+                {t.headingAccent}
               </span>
             </h2>
           </FadeIn>
@@ -95,7 +73,7 @@ export function FAQSection() {
 
         {/* Accordion */}
         <div className="space-y-3">
-          {faqs.map((item, i) => (
+          {t.items.map((item, i) => (
             <FAQItem key={item.q} q={item.q} a={item.a} index={i} />
           ))}
         </div>

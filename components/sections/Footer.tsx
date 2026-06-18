@@ -1,15 +1,10 @@
+"use client";
+
 import { MessageCircle } from "lucide-react";
+import { useLanguage } from "@/lib/language-context";
+import { translations } from "@/lib/translations";
 
 const WHATSAPP_URL = "https://wa.me/17542928576";
-
-const navLinks = [
-  { href: "#about", label: "Об основателе" },
-  { href: "#achievements", label: "Достижения" },
-  { href: "#methodology", label: "Методика" },
-  { href: "#testimonials", label: "Отзывы" },
-  { href: "#pricing", label: "Стоимость" },
-  { href: "#faq", label: "FAQ" },
-];
 
 const socialLinks = [
   {
@@ -38,6 +33,8 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const { lang } = useLanguage();
+  const t = translations[lang].footer;
   const year = new Date().getFullYear();
 
   return (
@@ -54,20 +51,16 @@ export function Footer() {
               </div>
               <span className="font-bold text-white text-lg">LikeSwim</span>
             </div>
-            <p className="text-slate-600 text-sm leading-relaxed max-w-xs">
-              LikeSwim — это не просто школа плавания. Это проект, который объединяет
-              профессиональный опыт, современный подход и желание сделать плавание
-              доступным для каждого.
-            </p>
+            <p className="text-slate-600 text-sm leading-relaxed max-w-xs">{t.brand}</p>
           </div>
 
           {/* Navigation */}
           <div>
             <h4 className="text-white font-medium mb-4 text-sm uppercase tracking-widest text-slate-500">
-              Разделы
+              {t.navHeading}
             </h4>
             <ul className="space-y-3">
-              {navLinks.map((link) => (
+              {t.nav.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
@@ -83,7 +76,7 @@ export function Footer() {
           {/* Contacts */}
           <div>
             <h4 className="text-white font-medium mb-4 text-sm uppercase tracking-widest text-slate-500">
-              Контакты
+              {t.contactsHeading}
             </h4>
             <div className="space-y-3">
               <a
@@ -93,9 +86,9 @@ export function Footer() {
                 className="inline-flex items-center gap-2 text-slate-600 hover:text-cyan-400 text-sm transition-colors duration-200"
               >
                 <MessageCircle className="w-4 h-4" />
-                Написать в WhatsApp
+                {t.whatsappLink}
               </a>
-              <p className="text-slate-700 text-sm">Флорида: от Майами до Вест-Палм-Бич</p>
+              <p className="text-slate-700 text-sm">{t.areaText}</p>
             </div>
 
             {/* Social icons */}
@@ -118,7 +111,7 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-700 text-sm">
-          <p>© {year} LikeSwim — Школа плавания. Все права защищены.</p>
+          <p>© {year} LikeSwim — {t.copyrightSuffix}</p>
           <p>like-swim.com</p>
         </div>
       </div>

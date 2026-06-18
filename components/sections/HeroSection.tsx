@@ -1,13 +1,20 @@
+"use client";
+
 import { ArrowDown, MessageCircle } from "lucide-react";
 import Image from "next/image";
+import { useLanguage } from "@/lib/language-context";
+import { translations } from "@/lib/translations";
 
 const WHATSAPP_URL = "https://wa.me/17542928576";
 
 export function HeroSection() {
+  const { lang } = useLanguage();
+  const t = translations[lang].hero;
+
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#0d1a2e]"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#1a3350]"
     >
       {/* Static gradient blobs — CSS only */}
       <div className="absolute inset-0 pointer-events-none">
@@ -35,7 +42,7 @@ export function HeroSection() {
         >
           <Image
             src="/logo_transparent.png"
-            alt="LikeSwim — Школа плавания"
+            alt={t.logoAlt}
             width={320}
             height={320}
             className="w-[240px] sm:w-[280px] md:w-[320px] h-auto"
@@ -44,12 +51,12 @@ export function HeroSection() {
           />
         </div>
 
-        {/* H1 — primary SEO heading, reinforces target keyword */}
+        {/* H1 */}
         <h1
           className="text-xl sm:text-2xl text-white/70 font-medium mb-6 animate-fade-up"
           style={{ animationDelay: "0.25s" }}
         >
-          Тренер по плаванию в Майами — Павел Левицкий
+          {t.h1}
         </h1>
 
         {/* Description */}
@@ -57,8 +64,7 @@ export function HeroSection() {
           className="text-base sm:text-lg text-slate-500 max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-up"
           style={{ animationDelay: "0.4s" }}
         >
-          Профессиональная школа плавания в Флориде, от Майами до Вест-Палм-Бич.
-          Индивидуальные и групповые тренировки для детей и взрослых.
+          {t.description}
         </p>
 
         {/* CTA buttons */}
@@ -73,13 +79,13 @@ export function HeroSection() {
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold text-lg shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] transition-all duration-300"
           >
             <MessageCircle className="w-5 h-5" />
-            Записаться в WhatsApp
+            {t.ctaWhatsapp}
           </a>
           <a
             href="#about"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/10 bg-white/5 text-white font-medium text-lg hover:bg-white/10 hover:border-white/20 transition-all duration-300"
           >
-            Узнать больше
+            {t.ctaLearnMore}
           </a>
         </div>
 
@@ -88,12 +94,7 @@ export function HeroSection() {
           className="flex flex-wrap justify-center gap-8 mt-20 pt-12 border-t border-white/5 animate-fade-up"
           style={{ animationDelay: "0.7s" }}
         >
-          {[
-            { value: "10+", label: "лет тренерства" },
-            { value: "2000+", label: "учеников" },
-            { value: "3", label: "страны" },
-            { value: "1:1", label: "и группы" },
-          ].map((stat) => (
+          {t.stats.map((stat) => (
             <div key={stat.label} className="text-center">
               <p className="text-2xl sm:text-3xl font-bold text-white">{stat.value}</p>
               <p className="text-slate-500 text-sm mt-1">{stat.label}</p>
