@@ -35,19 +35,18 @@ export function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center pt-24">
-        {/* Logo */}
-        <div
-          className="flex justify-center mb-8 animate-fade-up"
-          style={{ animationDelay: "0.1s" }}
-        >
+        {/* Logo — no fade animation so LCP is measured immediately */}
+        <div className="flex justify-center mb-8">
           <Image
-            src="/logo_transparent.png"
+            src="/logo_transparent.webp"
             alt={t.logoAlt}
             width={320}
             height={320}
+            sizes="(min-width: 768px) 320px, (min-width: 640px) 280px, 240px"
             className="w-[240px] sm:w-[280px] md:w-[320px] h-auto"
             style={{ filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.8))" }}
-            priority
+            preload
+            fetchPriority="high"
           />
         </div>
 

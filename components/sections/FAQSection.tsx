@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ChevronDown } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
@@ -19,29 +18,18 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
           aria-expanded={open}
         >
           <span className="text-white font-medium leading-snug">{q}</span>
-          <motion.span
-            animate={{ rotate: open ? 180 : 0 }}
-            transition={{ duration: 0.2 }}
-            className="shrink-0 text-slate-500 group-hover:text-slate-300 transition-colors"
+          <span
+            className={`shrink-0 text-slate-500 group-hover:text-slate-300 transition-all duration-200 ${open ? "rotate-180" : ""}`}
           >
             <ChevronDown className="w-5 h-5" />
-          </motion.span>
+          </span>
         </button>
 
-        <AnimatePresence initial={false}>
-          {open && (
-            <motion.div
-              key="content"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.22, ease: "easeInOut" }}
-              className="overflow-hidden"
-            >
-              <p className="px-6 pb-5 text-slate-500 leading-relaxed">{a}</p>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <div className={`grid transition-all duration-220 ease-in-out ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+          <div className="overflow-hidden">
+            <p className="px-6 pb-5 text-slate-500 leading-relaxed">{a}</p>
+          </div>
+        </div>
       </div>
     </FadeIn>
   );

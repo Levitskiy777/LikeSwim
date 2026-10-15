@@ -9,57 +9,18 @@ import { ServiceAreasSection } from "@/components/sections/ServiceAreasSection";
 import { PricingSection } from "@/components/sections/PricingSection";
 import { OnlineCoachingSection } from "@/components/sections/OnlineCoachingSection";
 import { FAQSection } from "@/components/sections/FAQSection";
+import { AiFactsSection } from "@/components/sections/AiFactsSection";
 import { CTASection } from "@/components/sections/CTASection";
+import { BookingForm } from "@/components/sections/BookingForm";
 import { Footer } from "@/components/sections/Footer";
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "LocalBusiness",
-      "@id": "https://like-swim.com/#business",
-      "name": "LikeSwim — Школа плавания Павла Левицкого",
-      "description":
-        "Профессиональный тренер по плаванию в Майами. Индивидуальные уроки для детей, взрослых и триатлетов. Первое занятие со скидкой 50%.",
-      "url": "https://like-swim.com",
-      "telephone": "+17542928576",
-      "priceRange": "$75–$145",
-      "image": "https://like-swim.com/logo_transparent.png",
-      "areaServed": [
-        "Hallandale Beach", "Hollywood", "Fort Lauderdale", "Aventura",
-        "Sunny Isles Beach", "Miami Beach", "Miami", "Coral Gables",
-        "Boca Raton", "West Palm Beach"
-      ],
-      "serviceType": ["Swim Lessons", "Swimming Coaching", "Triathlon Training"],
-      "sameAs": [
-        "https://instagram.com/levitskii.swimcoach.miami",
-        "https://wa.me/17542928576",
-        "https://t.me/+17542928576"
-      ],
-    },
-    {
-      "@type": "Person",
-      "@id": "https://like-swim.com/#person",
-      "name": "Павел Левицкий",
-      "alternateName": "Pavel Levitskii",
-      "jobTitle": "Тренер по плаванию",
-      "description":
-        "Мастер спорта по плаванию, победитель Первенства России 2007, лауреат Президентской премии для молодёжи. Более 10 лет тренерской практики.",
-      "worksFor": { "@id": "https://like-swim.com/#business" },
-      "knowsLanguage": ["ru", "he", "en"],
-      "knowsAbout": [
-        "Swimming", "Swim Coaching", "Triathlon", "Children Swimming", "Adult Swimming"
-      ],
-    },
-  ],
-};
+import { homeJsonLd } from "@/lib/home-jsonld";
 
 export default function Home() {
   return (
     <main>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
       />
       <HeroSection />
       <AboutSection />
@@ -69,10 +30,37 @@ export default function Home() {
       <TestimonialsSection />
       <GallerySection />
       <ServiceAreasSection />
+
+      {/* Featured landing pages — internal links for SEO */}
+      <section className="py-10 bg-[#162d47] border-t border-white/5">
+        <div className="max-w-5xl mx-auto px-6">
+          <p className="text-slate-500 text-sm mb-4 text-center">Popular lesson pages</p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {[
+              { href: "/en/hallandale-beach/private-swimming-lessons-kids", label: "Private Swim Lessons — Hallandale Beach" },
+              { href: "/en/miami/private-swimming-lessons-kids", label: "Private Swim Lessons — Miami" },
+              { href: "/en/sunny-isles-beach/private-swimming-lessons-kids", label: "Private Swim Lessons — Sunny Isles Beach" },
+              { href: "/en/hollywood/private-swimming-lessons-kids", label: "Private Swim Lessons — Hollywood" },
+              { href: "/en/miami/triathlon-swim-training", label: "Triathlon Swim Training — Miami" },
+            ].map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="px-4 py-2 rounded-full border border-white/10 text-slate-400 text-sm hover:text-cyan-400 hover:border-cyan-500/30 transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <PricingSection />
       <OnlineCoachingSection />
       <FAQSection />
+      <AiFactsSection />
       <CTASection />
+      <BookingForm />
       <Footer />
     </main>
   );

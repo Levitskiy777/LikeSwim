@@ -20,6 +20,7 @@ export type RuServiceData = {
   priceDetail: string;
   firstLesson?: string;
   groupSize?: string;
+  groupNote?: string;
   includes: string[];
   goodFor: string[];
   faq: { q: string; a: string }[];
@@ -222,6 +223,7 @@ export const ruServices: RuServiceData[] = [
     price: "от $120",
     priceDetail: "$120 / 30 мин · $145 / 45 мин · $170 / 60 мин",
     groupSize: "2–4 ребёнка",
+    groupNote: "цена за группу до 4 человек",
     includes: [
       "Безопасность на воде и правила поведения в бассейне",
       "Техника удержания на воде и правильное положение тела",
@@ -255,6 +257,7 @@ export const ruServices: RuServiceData[] = [
     price: "от $120",
     priceDetail: "$120 / 30 мин · $145 / 45 мин · $170 / 60 мин",
     groupSize: "2–4 взрослых",
+    groupNote: "цена за группу до 4 человек",
     includes: [
       "Уверенность в воде и техники расслабления",
       "Правильное положение тела и техника удержания на воде",
@@ -384,8 +387,8 @@ export const ruServices: RuServiceData[] = [
     shortName: "Онлайн-тренер по плаванию",
     serviceType: "online",
     tagline: "Профессиональный онлайн-коучинг по плаванию из любой точки мира",
-    price: "от $50",
-    priceDetail: "$50 / 30 мин анализ · $80 / 60 мин полная сессия",
+    price: "от $40",
+    priceDetail: "$40 / анализ · $200 / 2 нед. · $650 / мес.",
     includes: [
       "Видеоанализ техники с разбором по кадрам",
       "Персональный план упражнений в письменной форме",

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { FadeIn } from "@/components/ui/fade-in";
-import { Award, Users, Clock, Star } from "lucide-react";
+import { Award, Users, Clock, Star, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/translations";
 
@@ -26,8 +26,8 @@ export function AboutSection() {
                   alt={t.photoAlt}
                   fill
                   className="object-cover object-top"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
+                  sizes="(max-width: 1024px) 100vw, 576px"
+                  loading="lazy"
                 />
                 <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[#1a3350] to-transparent" />
               </div>
@@ -65,6 +65,18 @@ export function AboutSection() {
                   </p>
                 ))}
               </div>
+            </FadeIn>
+
+            <FadeIn delay={0.35}>
+              <a
+                href="https://www.worldaquatics.com/athletes/1013361/pavel-levitskiy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-indigo-500/20 bg-indigo-500/5 text-indigo-400 text-xs font-medium hover:border-indigo-500/40 hover:bg-indigo-500/10 transition-all duration-200"
+              >
+                <ExternalLink className="w-3 h-3 shrink-0" />
+                {t.worldAquaticsLabel}
+              </a>
             </FadeIn>
 
             {/* Highlights grid */}

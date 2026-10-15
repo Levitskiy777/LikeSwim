@@ -20,6 +20,7 @@ export type HeServiceData = {
   priceDetail: string;
   firstLesson?: string;
   groupSize?: string;
+  groupNote?: string;
   includes: string[];
   goodFor: string[];
   faq: { q: string; a: string }[];
@@ -222,6 +223,7 @@ export const heServices: HeServiceData[] = [
     price: "מ-$120",
     priceDetail: "$120 / 30 דק' · $145 / 45 דק' · $170 / 60 דק'",
     groupSize: "2–4 ילדים",
+    groupNote: "מחיר לקבוצה, עד 4 אנשים",
     includes: [
       "בטיחות במים וכללי התנהגות בבריכה",
       "טכניקת ציפה ותנוחת גוף נכונה",
@@ -273,6 +275,7 @@ export const heServices: HeServiceData[] = [
     price: "מ-$120",
     priceDetail: "$120 / 30 דק' · $145 / 45 דק' · $170 / 60 דק'",
     groupSize: "2–4 מבוגרים",
+    groupNote: "מחיר לקבוצה, עד 4 אנשים",
     includes: [
       "ביטחון במים וטכניקות הרפיה",
       "תנוחת גוף נכונה וטכניקת ציפה",

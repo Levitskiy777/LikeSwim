@@ -1,7 +1,7 @@
 "use client";
 
 import { FadeIn } from "@/components/ui/fade-in";
-import { ExternalLink, Newspaper } from "lucide-react";
+import { ExternalLink, Newspaper, Shield } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/translations";
 
@@ -34,6 +34,14 @@ export function PressSection() {
                 rel="noopener noreferrer"
                 className="flex flex-col h-full rounded-2xl bg-white/[0.03] border border-white/10 p-6 hover:border-cyan-500/30 hover:-translate-y-1 transition-all duration-300 group"
               >
+                {/* Official badge */}
+                {"officialBadge" in mention && (
+                  <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs font-medium mb-4 self-start">
+                    <Shield className="w-3 h-3 shrink-0" />
+                    {mention.officialBadge}
+                  </div>
+                )}
+
                 {/* Publication */}
                 <div className="flex items-center gap-3 mb-5">
                   <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
@@ -42,10 +50,15 @@ export function PressSection() {
                   <span className="text-slate-400 text-sm font-medium">{mention.publication}</span>
                 </div>
 
-                {/* Title */}
-                <p className="text-white text-base leading-snug font-medium flex-1 mb-5 group-hover:text-cyan-300 transition-colors duration-200">
-                  {mention.title}
-                </p>
+                {/* Title + optional description */}
+                <div className="flex-1 mb-5">
+                  <p className="text-white text-base leading-snug font-medium group-hover:text-cyan-300 transition-colors duration-200">
+                    {mention.title}
+                  </p>
+                  {"description" in mention && (
+                    <p className="text-slate-500 text-sm leading-relaxed mt-2">{mention.description}</p>
+                  )}
+                </div>
 
                 {/* Read link */}
                 <div className="flex items-center gap-1.5 text-slate-500 text-sm group-hover:text-cyan-400 transition-colors duration-200">

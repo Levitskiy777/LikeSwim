@@ -1,17 +1,17 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { FadeIn, StaggerContainer, staggerItem } from "@/components/ui/fade-in";
-import { Medal, Trophy, Star, Award, Waves } from "lucide-react";
+import { FadeIn, StaggerContainer } from "@/components/ui/fade-in";
+import { Medal, Trophy, Star, Award, Waves, Shield, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/translations";
 
 const cardMeta = [
-  { icon: Trophy, accent: "from-yellow-500/20 to-amber-600/10", iconColor: "text-yellow-400", border: "hover:border-yellow-500/20", year: "2002" },
+  { icon: Trophy, accent: "from-yellow-500/20 to-amber-600/10", iconColor: "text-yellow-400", border: "hover:border-yellow-500/20", year: "2007" },
   { icon: Medal, accent: "from-cyan-500/20 to-blue-600/10", iconColor: "text-cyan-400", border: "hover:border-cyan-500/20", year: "2005" },
   { icon: Star, accent: "from-violet-500/20 to-purple-600/10", iconColor: "text-violet-400", border: "hover:border-violet-500/20", year: "2007" },
   { icon: Award, accent: "from-rose-500/20 to-pink-600/10", iconColor: "text-rose-400", border: "hover:border-rose-500/20", year: "2007" },
   { icon: Waves, accent: "from-sky-500/20 to-teal-600/10", iconColor: "text-sky-400", border: "hover:border-sky-500/20", year: "2006–2008" },
+  { icon: Shield, accent: "from-indigo-500/20 to-blue-600/10", iconColor: "text-indigo-400", border: "hover:border-indigo-500/20", year: "2009–2010" },
 ];
 
 export function AchievementsSection() {
@@ -64,9 +64,8 @@ export function AchievementsSection() {
             const meta = cardMeta[idx];
             const Icon = meta.icon;
             return (
-              <motion.div
+              <div
                 key={item.title}
-                variants={staggerItem}
                 className={`relative p-6 rounded-2xl bg-gradient-to-br ${meta.accent} border border-white/5 ${meta.border} hover:-translate-y-1 hover:scale-[1.01] transition-all duration-250 group overflow-hidden${idx === t.items.length - 1 && t.items.length % 2 !== 0 ? " sm:col-span-2 sm:max-w-[calc(50%-12px)]" : ""}`}
               >
                 <span className="absolute top-4 right-4 text-xs font-mono text-slate-600 group-hover:text-slate-500 transition-colors">
@@ -82,8 +81,20 @@ export function AchievementsSection() {
                 </h3>
                 <p className="text-slate-500 text-sm leading-relaxed">{item.description}</p>
 
+                {"verifiedUrl" in item && (
+                  <a
+                    href={item.verifiedUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 mt-3 px-2.5 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 text-xs font-medium hover:border-indigo-500/50 hover:bg-indigo-500/15 transition-all duration-200"
+                  >
+                    <ExternalLink className="w-3 h-3 shrink-0" />
+                    {item.verifiedLabel}
+                  </a>
+                )}
+
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-white/[0.02] to-transparent" />
-              </motion.div>
+              </div>
             );
           })}
         </StaggerContainer>

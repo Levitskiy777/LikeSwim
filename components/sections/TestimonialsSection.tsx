@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { FadeIn, StaggerContainer, staggerItem } from "@/components/ui/fade-in";
+import { FadeIn, StaggerContainer } from "@/components/ui/fade-in";
 import { Star, Quote } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/translations";
@@ -97,9 +96,8 @@ export function TestimonialsSection() {
           staggerDelay={0.08}
         >
           {testimonials.map((testimonial) => (
-            <motion.div
+            <div
               key={testimonial.name}
-              variants={staggerItem}
               className="relative p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/10 hover:-translate-y-1 hover:scale-[1.01] transition-all duration-250 group flex flex-col"
             >
               <Quote className="w-8 h-8 text-white/5 group-hover:text-white/8 transition-colors mb-4 shrink-0" />
@@ -119,7 +117,7 @@ export function TestimonialsSection() {
                 </div>
                 <StarRating rating={testimonial.rating} />
               </div>
-            </motion.div>
+            </div>
           ))}
         </StaggerContainer>
       </div>

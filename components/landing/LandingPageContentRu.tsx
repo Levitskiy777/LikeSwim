@@ -7,6 +7,7 @@ import {
   buildRuH1,
   buildRuSubtitle,
   buildRuIntro,
+  ruServices,
 } from "@/lib/landing-pages-ru";
 
 const WHATSAPP_URL = "https://wa.me/17542928576";
@@ -23,8 +24,41 @@ export function LandingPageContentRu({
   const subtitle = buildRuSubtitle(city, service);
   const intro = buildRuIntro(city, service);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "name": "LikeSwim",
+        "url": `https://like-swim.com/ru/${city.slug}/${service.slug}`,
+        "telephone": "+17542928576",
+        "priceRange": service.price,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": city.name,
+          "addressRegion": "FL",
+          "addressCountry": "US",
+        },
+        "areaServed": city.name,
+        "description": `${service.name} в ${city.name}, FL. ${service.tagline}`,
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": service.faq.map((item) => ({
+          "@type": "Question",
+          "name": item.q,
+          "acceptedAnswer": { "@type": "Answer", "text": item.a },
+        })),
+      },
+    ],
+  };
+
   return (
     <main className="bg-[#1a3350]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* ── Hero ────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden pt-32 pb-20">
         <div className="absolute inset-0 pointer-events-none">
@@ -43,8 +77,13 @@ export function LandingPageContentRu({
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-300 text-sm font-semibold mb-6">
-                {service.price} · {service.firstLesson ?? service.priceDetail}
+              <div className="mb-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-300 text-sm font-semibold">
+                  {service.price} · {service.firstLesson ?? service.priceDetail}
+                </div>
+                {service.groupNote && (
+                  <p className="text-slate-500 text-xs mt-1.5">{service.groupNote}</p>
+                )}
               </div>
 
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
@@ -298,7 +337,9 @@ export function LandingPageContentRu({
               </span>
             </h2>
             <p className="text-slate-400 max-w-xl mx-auto text-lg">
-              Павел приезжает к {city.poolContext} по всему {city.name} и соседним районам. Вам никуда не нужно ехать — он приедет к вам.
+              {service.serviceType === "online"
+                ? `Отправьте видео плавания из любой точки мира и получите экспертный разбор. Пловцы из ${city.name} и со всего мира получают одинаково персональный анализ и обратную связь.`
+                : `Павел приезжает к ${city.poolContext} по всему ${city.name} и соседним районам. Вам никуда не нужно ехать — он приедет к вам.`}
             </p>
           </div>
 
@@ -338,6 +379,26 @@ export function LandingPageContentRu({
         </div>
       </section>
 
+      {/* ── Другие услуги в этом городе ──────────────────────────────── */}
+      <section className="py-10 bg-[#162d47] border-t border-white/5">
+        <div className="max-w-5xl mx-auto px-6">
+          <p className="text-slate-500 text-sm mb-4">Другие услуги в {city.name}:</p>
+          <div className="flex flex-wrap gap-3">
+            {ruServices
+              .filter((s) => s.slug !== service.slug)
+              .map((s) => (
+                <a
+                  key={s.slug}
+                  href={`/ru/${city.slug}/${s.slug}`}
+                  className="px-4 py-2 rounded-full border border-white/10 text-slate-400 text-sm hover:text-cyan-400 hover:border-cyan-500/30 transition-colors"
+                >
+                  {s.shortName}
+                </a>
+              ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ──────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-24">
         <div className="max-w-4xl mx-auto px-6">
@@ -354,18 +415,26 @@ export function LandingPageContentRu({
               </div>
 
               <h2 className="text-3xl sm:text-5xl font-bold text-white mb-4 leading-tight">
-                Готовы начать в {city.name}?
+                {service.serviceType === "online"
+                  ? "Начните онлайн-тренировки сегодня"
+                  : <>Готовы начать в {city.name}?</>}
                 <br />
                 <span className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
-                  Первое занятие{" "}
-                  <span className="underline decoration-cyan-500/50 decoration-2 underline-offset-4">
-                    со скидкой 50%
-                  </span>
+                  {service.serviceType === "online" ? (
+                    "Экспертный разбор — из любой точки мира"
+                  ) : (
+                    <>Первое занятие{" "}
+                    <span className="underline decoration-cyan-500/50 decoration-2 underline-offset-4">
+                      со скидкой 50%
+                    </span></>
+                  )}
                 </span>
               </h2>
 
               <p className="text-slate-400 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-                Напишите Павлу в WhatsApp — он обычно отвечает в течение нескольких минут. Вы договоритесь о времени и ближайшем к вам бассейне в {city.name}.
+                {service.serviceType === "online"
+                  ? "Отправьте видео плавания в WhatsApp или Telegram. Выберите анализ техники или план онлайн-тренировок. Павел разберёт вашу технику и пришлёт персональные рекомендации."
+                  : `Напишите Павлу в WhatsApp — он обычно отвечает в течение нескольких минут. Вы договоритесь о времени и ближайшем к вам бассейне в ${city.name}.`}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -388,10 +457,21 @@ export function LandingPageContentRu({
               </div>
 
               <div className="flex flex-wrap justify-center gap-6 mt-12 pt-10 border-t border-white/5 text-sm text-slate-600">
-                <span>✓ Первое занятие со скидкой 50%</span>
-                <span>✓ Без очереди</span>
-                <span>✓ Гибкое расписание</span>
-                <span>✓ Павел приезжает к вашему бассейну в {city.name}</span>
+                {service.serviceType === "online" ? (
+                  <>
+                    <span>✓ Анализ видео из любой точки мира</span>
+                    <span>✓ Обратная связь в течение 24–48 ч.</span>
+                    <span>✓ Гибкое расписание</span>
+                    <span>✓ Без поездок</span>
+                  </>
+                ) : (
+                  <>
+                    <span>✓ Первое занятие со скидкой 50%</span>
+                    <span>✓ Без очереди</span>
+                    <span>✓ Гибкое расписание</span>
+                    <span>✓ Павел приезжает к вашему бассейну в {city.name}</span>
+                  </>
+                )}
               </div>
             </div>
           </div>

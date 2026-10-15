@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, Menu, X } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/translations";
@@ -91,57 +90,39 @@ export function Header() {
         </div>
       </header>
 
-      {/* Mobile menu overlay */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="fixed top-0 left-0 right-0 z-40 pt-20 pb-6 px-6 bg-[#1a3350]/95 backdrop-blur-xl border-b border-white/5 xl:hidden"
-          >
-            <nav className="flex flex-col gap-1 mb-6">
-              {t.nav.map((link, i) => (
-                <motion.a
-                  key={link.href}
-                  href={link.href}
-                  onClick={handleNavClick}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  className="px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-white/5 transition-all duration-200 text-base font-medium"
-                >
-                  {link.label}
-                </motion.a>
-              ))}
-            </nav>
+      {/* Mobile menu overlay — always rendered, visibility driven by CSS */}
+      <div
+        className={`fixed top-0 left-0 right-0 z-40 pt-20 pb-6 px-6 bg-[#1a3350]/95 backdrop-blur-xl border-b border-white/5 xl:hidden transition-all duration-200 ${menuOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}
+      >
+        <nav className="flex flex-col gap-1 mb-6">
+          {t.nav.map((link) => (
             <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              key={link.href}
+              href={link.href}
               onClick={handleNavClick}
-              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold shadow-lg shadow-cyan-500/20"
+              className="px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-white/5 transition-all duration-200 text-base font-medium"
             >
-              <MessageCircle className="w-5 h-5" />
-              {t.mobileWhatsapp}
+              {link.label}
             </a>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          ))}
+        </nav>
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={handleNavClick}
+          className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold shadow-lg shadow-cyan-500/20"
+        >
+          <MessageCircle className="w-5 h-5" />
+          {t.mobileWhatsapp}
+        </a>
+      </div>
 
       {/* Backdrop */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-30 xl:hidden"
-            onClick={() => setMenuOpen(false)}
-          />
-        )}
-      </AnimatePresence>
+      <div
+        className={`fixed inset-0 z-30 xl:hidden transition-opacity duration-200 ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+        onClick={() => setMenuOpen(false)}
+      />
     </>
   );
 }

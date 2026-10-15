@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { FadeIn, StaggerContainer, staggerItem } from "@/components/ui/fade-in";
+import { FadeIn, StaggerContainer } from "@/components/ui/fade-in";
 import { MessageCircle, Check, User } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/translations";
@@ -50,9 +49,8 @@ export function PricingSection() {
           {t.plans.map((plan, idx) => {
             const meta = planMeta[idx];
             return (
-              <motion.div
+              <div
                 key={plan.duration}
-                variants={staggerItem}
                 className={`flex flex-col h-full rounded-2xl bg-gradient-to-br ${meta.accent} border border-white/5 ${meta.border} hover:-translate-y-1.5 p-7 transition-all duration-250`}
               >
                 {/* Badge */}
@@ -114,7 +112,7 @@ export function PricingSection() {
                   <MessageCircle className="w-4 h-4 shrink-0" />
                   {t.whatsappCta}
                 </a>
-              </motion.div>
+              </div>
             );
           })}
         </StaggerContainer>
@@ -154,6 +152,7 @@ export function PricingSection() {
                 </a>
               </div>
             </div>
+            <p className="text-slate-500 text-xs mt-4">{t.groupNote}</p>
           </div>
         </FadeIn>
 

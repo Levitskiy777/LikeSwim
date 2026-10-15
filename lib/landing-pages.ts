@@ -24,6 +24,7 @@ export type ServiceData = {
   priceDetail: string;
   firstLesson?: string;
   groupSize?: string;
+  groupNote?: string;
   includes: string[];
   goodFor: string[];
   faq: { q: string; a: string }[];
@@ -226,6 +227,7 @@ export const services: ServiceData[] = [
     price: "from $120",
     priceDetail: "$120 / 30 min · $145 / 45 min · $170 / 60 min",
     groupSize: "2–4 children",
+    groupNote: "price per group, up to 4 people",
     includes: [
       "Water safety and pool rules",
       "Floating and basic body position",
@@ -259,6 +261,7 @@ export const services: ServiceData[] = [
     price: "from $120",
     priceDetail: "$120 / 30 min · $145 / 45 min · $170 / 60 min",
     groupSize: "2–4 adults",
+    groupNote: "price per group, up to 4 people",
     includes: [
       "Water confidence and relaxation techniques",
       "Proper body alignment and floating",
@@ -388,8 +391,8 @@ export const services: ServiceData[] = [
     shortName: "Online Swim Coaching",
     serviceType: "online",
     tagline: "Expert video-based swim coaching from anywhere in the world",
-    price: "from $50",
-    priceDetail: "$50 / 30 min analysis · $80 / 60 min full session",
+    price: "from $40",
+    priceDetail: "$40 / analysis · $200 / 2 weeks · $650 / month",
     includes: [
       "Video stroke analysis with frame-by-frame breakdown",
       "Personalized written drill and training plan",
@@ -436,8 +439,8 @@ export function buildMetaDescription(city: CityData, service: ServiceData): stri
   const descByType: Record<ServiceType, string> = {
     "group-kids": `Small-group swimming lessons for kids in ${city.name}, FL. Up to 4 children per session — fun, structured, and affordable. Serving ${city.county}. First lesson 50% off.`,
     "group-adults": `Group swimming lessons for adults in ${city.name}, FL. Small classes of up to 4 people with expert coaching from a Master of Sport. Serving ${city.county}.`,
-    "private-kids": `Private 1-on-1 swimming lessons for kids in ${city.name}, FL. Expert coaching from a Master of Sport swimmer with 10+ years of experience. First lesson 50% off.`,
-    "private-adults": `Private swimming lessons for adults in ${city.name}, FL. One-on-one coaching for all levels — from beginner to advanced. Serving ${city.county}. First lesson 50% off.`,
+    "private-kids": `Private 1-on-1 swim lessons for kids in ${city.name}, FL. Expert coaching from a Master of Sport. First lesson 50% off — no commitment.`,
+    "private-adults": `Private swimming lessons for adults in ${city.name}, FL — 1-on-1 coaching for all levels. Master of Sport in swimming. First lesson 50% off.`,
     "triathlon": `Triathlon swim coaching in ${city.name}, FL. Race-focused training for sprints, Olympics, and Ironman events. Coach Pavel Levitskii — Master of Sport in swimming.`,
     "online": `Online swim coaching with Pavel Levitskii — expert video analysis and personalized drill plans delivered worldwide. Perfect for swimmers in ${city.name} or anywhere.`,
   };

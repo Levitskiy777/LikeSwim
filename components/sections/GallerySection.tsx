@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
 import { FadeIn } from "@/components/ui/fade-in";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
@@ -134,7 +133,7 @@ export function GallerySection() {
                       fill
                       className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 1152px"
-                      {...(i === 0 ? { priority: true } : { loading: "lazy" })}
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
                   </div>
@@ -191,68 +190,58 @@ export function GallerySection() {
       </div>
 
       {/* Lightbox */}
-      <AnimatePresence>
-        {lightbox !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
-            onClick={() => setLightbox(null)}
-            onTouchStart={onLightboxTouchStart}
-            onTouchEnd={onLightboxTouchEnd}
+      {lightbox !== null && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 animate-lightbox-in"
+          onClick={() => setLightbox(null)}
+          onTouchStart={onLightboxTouchStart}
+          onTouchEnd={onLightboxTouchEnd}
+        >
+          <div
+            className="relative max-w-5xl w-full max-h-[90vh] flex items-center justify-center animate-lightbox-scale-in"
+            onClick={(e) => e.stopPropagation()}
           >
-            <motion.div
-              initial={{ scale: 0.93, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.93, opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="relative max-w-5xl w-full max-h-[90vh] flex items-center justify-center"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="relative w-full h-[80vh]">
-                <Image
-                  src={images[lightbox].src}
-                  alt={images[lightbox].alt}
-                  fill
-                  className="object-contain"
-                  sizes="100vw"
-                  priority
-                />
-              </div>
-            </motion.div>
-
-            <button
-              onClick={() => setLightbox(null)}
-              aria-label={t.closeLabel}
-              className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <button
-              onClick={(e) => { e.stopPropagation(); setLightbox((lightbox - 1 + n) % n); }}
-              aria-label={t.prevLabel}
-              className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-
-            <button
-              onClick={(e) => { e.stopPropagation(); setLightbox((lightbox + 1) % n); }}
-              aria-label={t.nextLabel}
-              className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
-
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/50 text-sm tabular-nums">
-              {lightbox + 1} / {n}
+            <div className="relative w-full h-[80vh]">
+              <Image
+                src={images[lightbox].src}
+                alt={images[lightbox].alt}
+                fill
+                className="object-contain"
+                sizes="100vw"
+                loading="lazy"
+              />
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+
+          <button
+            onClick={() => setLightbox(null)}
+            aria-label={t.closeLabel}
+            className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+          >
+            <X className="w-5 h-5" />
+          </button>
+
+          <button
+            onClick={(e) => { e.stopPropagation(); setLightbox((lightbox - 1 + n) % n); }}
+            aria-label={t.prevLabel}
+            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          <button
+            onClick={(e) => { e.stopPropagation(); setLightbox((lightbox + 1) % n); }}
+            aria-label={t.nextLabel}
+            className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/50 text-sm tabular-nums">
+            {lightbox + 1} / {n}
+          </div>
+        </div>
+      )}
     </section>
   );
 }

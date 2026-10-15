@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { FadeIn, StaggerContainer, staggerItem } from "@/components/ui/fade-in";
+import { FadeIn, StaggerContainer } from "@/components/ui/fade-in";
 import { Search, Layers, Zap, CheckCircle } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/translations";
@@ -46,9 +45,8 @@ export function MethodologySection() {
             const meta = stepMeta[i];
             const Icon = meta.icon;
             return (
-              <motion.div
+              <div
                 key={meta.number}
-                variants={staggerItem}
                 className={`relative p-8 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/10 hover:-translate-y-1.5 shadow-xl ${meta.glow} transition-all duration-250 group`}
               >
                 <div className="flex items-start justify-between mb-6">
@@ -66,7 +64,7 @@ export function MethodologySection() {
 
                 <h3 className="text-white font-bold text-xl mb-3">{step.title}</h3>
                 <p className="text-slate-400 text-base leading-relaxed">{step.description}</p>
-              </motion.div>
+              </div>
             );
           })}
         </StaggerContainer>

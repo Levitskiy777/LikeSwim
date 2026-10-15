@@ -7,6 +7,7 @@ import {
   buildH1,
   buildSubtitle,
   buildIntro,
+  services,
 } from "@/lib/landing-pages";
 
 const WHATSAPP_URL = "https://wa.me/17542928576";
@@ -23,8 +24,41 @@ export function LandingPageContent({
   const subtitle = buildSubtitle(city, service);
   const intro = buildIntro(city, service);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "name": "LikeSwim",
+        "url": `https://like-swim.com/en/${city.slug}/${service.slug}`,
+        "telephone": "+17542928576",
+        "priceRange": service.price,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": city.name,
+          "addressRegion": "FL",
+          "addressCountry": "US",
+        },
+        "areaServed": city.name,
+        "description": `${service.name} in ${city.name}, FL. ${service.tagline}`,
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": service.faq.map((item) => ({
+          "@type": "Question",
+          "name": item.q,
+          "acceptedAnswer": { "@type": "Answer", "text": item.a },
+        })),
+      },
+    ],
+  };
+
   return (
     <main className="bg-[#1a3350]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* ── Hero ────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden pt-32 pb-20">
         {/* Background blobs */}
@@ -46,8 +80,13 @@ export function LandingPageContent({
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               {/* Price badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-300 text-sm font-semibold mb-6">
-                {service.price} · {service.firstLesson ?? service.priceDetail}
+              <div className="mb-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-300 text-sm font-semibold">
+                  {service.price} · {service.firstLesson ?? service.priceDetail}
+                </div>
+                {service.groupNote && (
+                  <p className="text-slate-500 text-xs mt-1.5">{service.groupNote}</p>
+                )}
               </div>
 
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
@@ -302,7 +341,9 @@ export function LandingPageContent({
               </span>
             </h2>
             <p className="text-slate-400 max-w-xl mx-auto text-lg">
-              Pavel travels to {city.poolContext} throughout {city.name} and surrounding communities. No need to drive anywhere — he comes to you.
+              {service.serviceType === "online"
+                ? `Send your swim video from anywhere in the world and receive expert coaching. Swimmers from ${city.name} and worldwide get the same personalized analysis and feedback.`
+                : `Pavel travels to ${city.poolContext} throughout ${city.name} and surrounding communities. No need to drive anywhere — he comes to you.`}
             </p>
           </div>
 
@@ -342,6 +383,26 @@ export function LandingPageContent({
         </div>
       </section>
 
+      {/* ── More services in this city ───────────────────────────────── */}
+      <section className="py-10 bg-[#162d47] border-t border-white/5">
+        <div className="max-w-5xl mx-auto px-6">
+          <p className="text-slate-500 text-sm mb-4">More services in {city.name}:</p>
+          <div className="flex flex-wrap gap-3">
+            {services
+              .filter((s) => s.slug !== service.slug)
+              .map((s) => (
+                <a
+                  key={s.slug}
+                  href={`/en/${city.slug}/${s.slug}`}
+                  className="px-4 py-2 rounded-full border border-white/10 text-slate-400 text-sm hover:text-cyan-400 hover:border-cyan-500/30 transition-colors"
+                >
+                  {s.shortName}
+                </a>
+              ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ──────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-24">
         <div className="max-w-4xl mx-auto px-6">
@@ -358,18 +419,26 @@ export function LandingPageContent({
               </div>
 
               <h2 className="text-3xl sm:text-5xl font-bold text-white mb-4 leading-tight">
-                Ready to start in {city.name}?
+                {service.serviceType === "online"
+                  ? "Start online coaching today"
+                  : <>Ready to start in {city.name}?</>}
                 <br />
                 <span className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
-                  First lesson{" "}
-                  <span className="underline decoration-cyan-500/50 decoration-2 underline-offset-4">
-                    50% off
-                  </span>
+                  {service.serviceType === "online" ? (
+                    "Expert feedback — wherever you swim"
+                  ) : (
+                    <>First lesson{" "}
+                    <span className="underline decoration-cyan-500/50 decoration-2 underline-offset-4">
+                      50% off
+                    </span></>
+                  )}
                 </span>
               </h2>
 
               <p className="text-slate-400 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-                Message Pavel on WhatsApp — he typically replies within minutes. You&apos;ll schedule a time and pool location in {city.name} that works for you.
+                {service.serviceType === "online"
+                  ? "Send your swim video via WhatsApp or Telegram. Choose a technique analysis or an online coaching plan. Pavel will review your technique and return personalized feedback."
+                  : `Message Pavel on WhatsApp — he typically replies within minutes. You'll schedule a time and pool location in ${city.name} that works for you.`}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -392,10 +461,21 @@ export function LandingPageContent({
               </div>
 
               <div className="flex flex-wrap justify-center gap-6 mt-12 pt-10 border-t border-white/5 text-sm text-slate-600">
-                <span>✓ First lesson 50% off</span>
-                <span>✓ No waitlists</span>
-                <span>✓ Flexible scheduling</span>
-                <span>✓ Pavel travels to your pool in {city.name}</span>
+                {service.serviceType === "online" ? (
+                  <>
+                    <span>✓ Video analysis from anywhere</span>
+                    <span>✓ Feedback within 24–48 hours</span>
+                    <span>✓ Flexible scheduling</span>
+                    <span>✓ No travel required</span>
+                  </>
+                ) : (
+                  <>
+                    <span>✓ First lesson 50% off</span>
+                    <span>✓ No waitlists</span>
+                    <span>✓ Flexible scheduling</span>
+                    <span>✓ Pavel travels to your pool in {city.name}</span>
+                  </>
+                )}
               </div>
             </div>
           </div>
