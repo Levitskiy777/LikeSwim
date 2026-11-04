@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MessageCircle, ArrowLeft, Clock } from "lucide-react";
-import { blogPosts, getPostBySlug, WHATSAPP_URL } from "@/lib/blog-posts";
+import { blogPosts, getPostBySlug, getRelatedServiceTypes, WHATSAPP_URL } from "@/lib/blog-posts";
+import { ruCities, ruServices } from "@/lib/landing-pages-ru";
 
 type Params = Promise<{ slug: string }>;
 
@@ -45,6 +46,12 @@ export default async function BlogPostPage({ params }: { params: Params }) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) notFound();
+
+  const relatedServiceType = getRelatedServiceTypes(post.slug)[0];
+  const relatedService = relatedServiceType
+    ? ruServices.find((s) => s.serviceType === relatedServiceType)
+    : undefined;
+  const relatedCities = ruCities.slice(0, 4);
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -164,6 +171,26 @@ export default async function BlogPostPage({ params }: { params: Params }) {
             Написать в WhatsApp
           </a>
         </div>
+
+        {/* Related service areas */}
+        {relatedService && (
+          <div className="mt-10">
+            <h3 className="text-white font-semibold text-lg mb-4">
+              {relatedService.shortName}
+            </h3>
+            <div className="flex flex-wrap gap-3">
+              {relatedCities.map((city) => (
+                <Link
+                  key={city.slug}
+                  href={`/ru/${city.slug}/${relatedService.slug}`}
+                  className="px-4 py-2 rounded-full border border-white/10 text-slate-400 text-sm hover:text-cyan-400 hover:border-cyan-500/30 transition-colors"
+                >
+                  {relatedService.shortName} — {city.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Related posts */}
         <div className="mt-16">

@@ -1,3 +1,5 @@
+import type { ServiceType } from "./landing-pages";
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -720,3 +722,28 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
 }
 
 export const WHATSAPP_URL = WHATSAPP;
+
+// ─── Related service areas ─────────────────────────────────────────────────
+// Maps each blog post to the service page(s) it's most relevant to, so blog
+// posts and city/service landing pages can link to each other.
+export const POST_SERVICE_MAP: Record<string, ServiceType[]> = {
+  "skolko-zanyatiy-nauchitsya-plavat": ["private-kids", "group-kids"],
+  "strah-vody-u-vzroslyh": ["private-adults"],
+  "gruppovye-ili-individualnye-uroki": ["private-adults", "group-adults"],
+  "s-kakogo-vozrasta-plavanie": ["private-kids"],
+  "podgotovka-k-ironman": ["triathlon"],
+  "tehnika-krolya": ["online", "private-adults"],
+  "plavanie-dlya-detey-s-autizmom-i-sdvg": ["private-kids"],
+  "plavanie-osobye-potrebnosti": ["private-kids"],
+  "tehnika-vazhnee-skorosti": ["online", "private-adults"],
+};
+
+export function getRelatedServiceTypes(slug: string): ServiceType[] {
+  return POST_SERVICE_MAP[slug] ?? [];
+}
+
+export function getRelatedPostsForService(serviceType: ServiceType, limit = 2): BlogPost[] {
+  return blogPosts
+    .filter((p) => (POST_SERVICE_MAP[p.slug] ?? []).includes(serviceType))
+    .slice(0, limit);
+}

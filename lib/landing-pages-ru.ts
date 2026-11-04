@@ -504,3 +504,18 @@ export function buildRuIntro(city: RuCityData, service: RuServiceData): string {
   const localNote = `Здесь, в ${city.descriptor}, вода — часть повседневной жизни, а не просто способ провести выходной.`;
   return `${base} ${localNote}`;
 }
+
+// Two city-specific FAQ items (unique per city, not per service) that get
+// appended to each service's FAQ list on the city/service landing pages.
+export function buildRuLocalFaq(city: RuCityData): { q: string; a: string }[] {
+  return [
+    {
+      q: `Вы приезжаете в ${city.name} и соседние районы?`,
+      a: `Да. Павел регулярно работает в ${city.name} (${city.county}) и в соседних районах — ${city.nearby.join(", ")}. Если ваш бассейн находится в одном из этих мест, просто укажите адрес при записи в WhatsApp.`,
+    },
+    {
+      q: `В каких бассейнах в ${city.name} проходят занятия?`,
+      a: `Павел приезжает к ${city.poolContext} по всему ${city.name}. Вам не нужно никуда ехать — достаточно назвать адрес вашего бассейна при записи.`,
+    },
+  ];
+}

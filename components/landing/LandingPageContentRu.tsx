@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { MessageCircle, Check, Users, MapPin, Phone } from "lucide-react";
+import Link from "next/link";
+import { MessageCircle, Check, Users, MapPin, Phone, BookOpen } from "lucide-react";
 import { LandingFAQ } from "./LandingFAQ";
 import {
   RuCityData,
@@ -7,8 +8,10 @@ import {
   buildRuH1,
   buildRuSubtitle,
   buildRuIntro,
+  buildRuLocalFaq,
   ruServices,
 } from "@/lib/landing-pages-ru";
+import { getRelatedPostsForService } from "@/lib/blog-posts";
 
 const WHATSAPP_URL = "https://wa.me/17542928576";
 const PHONE = "+1 (754) 292-8576";
@@ -23,6 +26,8 @@ export function LandingPageContentRu({
   const h1 = buildRuH1(city, service);
   const subtitle = buildRuSubtitle(city, service);
   const intro = buildRuIntro(city, service);
+  const faqItems = [...service.faq, ...buildRuLocalFaq(city)];
+  const relatedPosts = getRelatedPostsForService(service.serviceType, 2);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -44,7 +49,7 @@ export function LandingPageContentRu({
       },
       {
         "@type": "FAQPage",
-        "mainEntity": service.faq.map((item) => ({
+        "mainEntity": faqItems.map((item) => ({
           "@type": "Question",
           "name": item.q,
           "acceptedAnswer": { "@type": "Answer", "text": item.a },
@@ -68,7 +73,7 @@ export function LandingPageContentRu({
 
         <div className="relative z-10 max-w-5xl mx-auto px-6">
           <p className="text-slate-500 text-sm mb-6">
-            <a href="/" className="hover:text-cyan-400 transition-colors">LikeSwim</a>
+            <Link href="/" className="hover:text-cyan-400 transition-colors">LikeSwim</Link>
             {" / "}
             <span className="text-slate-400">{city.name}</span>
             {" / "}
@@ -375,7 +380,7 @@ export function LandingPageContentRu({
               </span>
             </h2>
           </div>
-          <LandingFAQ items={service.faq} />
+          <LandingFAQ items={faqItems} />
         </div>
       </section>
 
@@ -398,6 +403,29 @@ export function LandingPageContentRu({
           </div>
         </div>
       </section>
+
+      {/* ── Статьи по теме ──────────────────────────────────────────────── */}
+      {relatedPosts.length > 0 && (
+        <section className="py-10 bg-[#162d47] border-t border-white/5">
+          <div className="max-w-5xl mx-auto px-6">
+            <p className="text-slate-500 text-sm mb-4 flex items-center gap-2">
+              <BookOpen className="w-4 h-4" />
+              Статьи по теме:
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {relatedPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/ru/blog/${post.slug}`}
+                  className="px-4 py-2 rounded-full border border-white/10 text-slate-400 text-sm hover:text-cyan-400 hover:border-cyan-500/30 transition-colors"
+                >
+                  {post.title}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── CTA ──────────────────────────────────────────────────────── */}
       <section className="py-20 sm:py-24">

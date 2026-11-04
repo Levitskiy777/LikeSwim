@@ -1,9 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import { FadeIn } from "@/components/ui/fade-in";
 import { MapPin } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/translations";
+import { cities as canonicalCities } from "@/lib/landing-pages";
+
+const slugByCityName = new Map(canonicalCities.map((c) => [c.name, c.slug]));
+const DEFAULT_SERVICE_SLUG = "private-swimming-lessons-adults";
 
 const cities = [
   "Hallandale Beach",
@@ -63,15 +68,31 @@ export function ServiceAreasSection() {
         {/* Cities grid */}
         <FadeIn delay={0.15}>
           <div className="flex flex-wrap justify-center gap-3">
-            {cities.map((city) => (
-              <div
-                key={city}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] hover:bg-white/[0.07] hover:border-cyan-500/30 text-slate-400 hover:text-white hover:-translate-y-0.5 text-sm font-medium transition-all duration-200 cursor-default"
-              >
-                <MapPin className="w-3 h-3 text-cyan-500/70 shrink-0" />
-                {city}
-              </div>
-            ))}
+            {cities.map((city) => {
+              const slug = slugByCityName.get(city);
+              const className =
+                "inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-white/8 bg-white/[0.03] hover:bg-white/[0.07] hover:border-cyan-500/30 text-slate-400 hover:text-white hover:-translate-y-0.5 text-sm font-medium transition-all duration-200";
+
+              if (slug) {
+                return (
+                  <Link
+                    key={city}
+                    href={`/${lang}/${slug}/${DEFAULT_SERVICE_SLUG}`}
+                    className={className}
+                  >
+                    <MapPin className="w-3 h-3 text-cyan-500/70 shrink-0" />
+                    {city}
+                  </Link>
+                );
+              }
+
+              return (
+                <div key={city} className={`${className} cursor-default`}>
+                  <MapPin className="w-3 h-3 text-cyan-500/70 shrink-0" />
+                  {city}
+                </div>
+              );
+            })}
           </div>
         </FadeIn>
 
