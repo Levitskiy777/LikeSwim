@@ -551,6 +551,21 @@ export function buildHeMetaDescription(city: HeCityData, service: HeServiceData)
   return byType[service.serviceType];
 }
 
+// Two city-specific FAQ items (unique per city, not per service) that get
+// appended to each service's FAQ list on the city/service landing pages.
+export function buildHeLocalFaq(city: HeCityData): { q: string; a: string }[] {
+  return [
+    {
+      q: `האם אתה מגיע ל${city.name} ולאזורים הסמוכים?`,
+      a: `כן. פבל עובד באופן קבוע ב${city.name} (${city.county}) ובאזורים הסמוכים — ${city.nearby.join(", ")}. אם הבריכה שלכם נמצאת באחד מהאזורים האלה, פשוט ציינו את הכתובת בעת ההזמנה בווטסאפ.`,
+    },
+    {
+      q: `באילו בריכות ב${city.name} מתקיימים השיעורים?`,
+      a: `פבל מגיע ישירות ל${city.poolContext} ברחבי ${city.name}. אין צורך לנסוע לשום מקום — רק ציינו את כתובת הבריכה שלכם בעת ההזמנה.`,
+    },
+  ];
+}
+
 export function buildHeH1(city: HeCityData, service: HeServiceData): string {
   return `${service.name} ב${city.name}, פלורידה`;
 }

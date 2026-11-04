@@ -451,6 +451,21 @@ export function buildH1(city: CityData, service: ServiceData): string {
   return `${service.name} in ${city.name}, FL`;
 }
 
+// Two city-specific FAQ items (unique per city, not per service) that get
+// appended to each service's FAQ list on the city/service landing pages.
+export function buildLocalFaq(city: CityData): { q: string; a: string }[] {
+  return [
+    {
+      q: `Do you travel to ${city.name} and nearby areas?`,
+      a: `Yes. Pavel regularly coaches in ${city.name} (${city.county}) and nearby areas — ${city.nearby.join(", ")}. If your pool is in one of these areas, just share the address when you book on WhatsApp.`,
+    },
+    {
+      q: `What pools do lessons take place at in ${city.name}?`,
+      a: `Pavel travels directly to ${city.poolContext} throughout ${city.name}. You don't need to go anywhere — just share your pool's address when booking.`,
+    },
+  ];
+}
+
 export function buildSubtitle(city: CityData, service: ServiceData): string {
   const byType: Record<ServiceType, string> = {
     "group-kids": `Small-group swim classes for children in ${city.descriptor} — ${service.groupSize} per session`,

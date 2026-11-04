@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { MessageCircle, Check, Users, MapPin, Phone } from "lucide-react";
 import { LandingFAQ } from "./LandingFAQ";
 import {
@@ -7,6 +8,7 @@ import {
   buildH1,
   buildSubtitle,
   buildIntro,
+  buildLocalFaq,
   services,
 } from "@/lib/landing-pages";
 
@@ -23,6 +25,7 @@ export function LandingPageContent({
   const h1 = buildH1(city, service);
   const subtitle = buildSubtitle(city, service);
   const intro = buildIntro(city, service);
+  const faqItems = [...service.faq, ...buildLocalFaq(city)];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -44,7 +47,7 @@ export function LandingPageContent({
       },
       {
         "@type": "FAQPage",
-        "mainEntity": service.faq.map((item) => ({
+        "mainEntity": faqItems.map((item) => ({
           "@type": "Question",
           "name": item.q,
           "acceptedAnswer": { "@type": "Answer", "text": item.a },
@@ -70,7 +73,7 @@ export function LandingPageContent({
         <div className="relative z-10 max-w-5xl mx-auto px-6">
           {/* Breadcrumb */}
           <p className="text-slate-500 text-sm mb-6">
-            <a href="/" className="hover:text-cyan-400 transition-colors">LikeSwim</a>
+            <Link href="/" className="hover:text-cyan-400 transition-colors">LikeSwim</Link>
             {" / "}
             <span className="text-slate-400">{city.name}</span>
             {" / "}
@@ -379,7 +382,7 @@ export function LandingPageContent({
               </span>
             </h2>
           </div>
-          <LandingFAQ items={service.faq} />
+          <LandingFAQ items={faqItems} />
         </div>
       </section>
 
