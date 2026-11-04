@@ -12,15 +12,10 @@ import { FAQSection } from "@/components/sections/FAQSection";
 import { CTASection } from "@/components/sections/CTASection";
 import { BookingForm } from "@/components/sections/BookingForm";
 import { Footer } from "@/components/sections/Footer";
-import { homeJsonLd } from "@/lib/home-jsonld";
 
 export default function RuHomePage() {
   return (
     <main>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
-      />
       <HeroSection />
       <AboutSection />
       <AchievementsSection />

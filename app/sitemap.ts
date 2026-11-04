@@ -6,31 +6,38 @@ import { blogPostsEn } from "@/lib/blog-posts-en";
 
 const BASE = "https://like-swim.com";
 
+// Static anchor date for pages without a real tracked modification date.
+// Bump this by hand when you make a substantive content change across
+// the site — don't switch it back to `new Date()`, which would mark
+// every page "changed" on every single deploy and erode Google's trust
+// in this field.
+const SITE_UPDATED = new Date("2026-11-04");
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [
     // ── Homepages ────────────────────────────────────────────────────
     {
       url: BASE,
-      lastModified: new Date(),
+      lastModified: SITE_UPDATED,
       changeFrequency: "monthly",
       priority: 1,
     },
     {
       url: `${BASE}/ru`,
-      lastModified: new Date(),
+      lastModified: SITE_UPDATED,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${BASE}/he`,
-      lastModified: new Date(),
+      lastModified: SITE_UPDATED,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     // ── Blog ─────────────────────────────────────────────────────────
     {
       url: `${BASE}/ru/blog`,
-      lastModified: new Date(),
+      lastModified: SITE_UPDATED,
       changeFrequency: "weekly",
       priority: 0.8,
     },
@@ -54,7 +61,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const service of services) {
       entries.push({
         url: `${BASE}/en/${city.slug}/${service.slug}`,
-        lastModified: new Date(),
+        lastModified: SITE_UPDATED,
         changeFrequency: "monthly",
         priority: 0.7,
       });
@@ -66,7 +73,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const service of ruServices) {
       entries.push({
         url: `${BASE}/ru/${city.slug}/${service.slug}`,
-        lastModified: new Date(),
+        lastModified: SITE_UPDATED,
         changeFrequency: "monthly",
         priority: 0.7,
       });
@@ -78,7 +85,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const service of services) {
       entries.push({
         url: `${BASE}/he/${city.slug}/${service.slug}`,
-        lastModified: new Date(),
+        lastModified: SITE_UPDATED,
         changeFrequency: "monthly",
         priority: 0.7,
       });
