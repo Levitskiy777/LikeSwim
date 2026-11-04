@@ -135,7 +135,7 @@ export function LandingPageContent({
                 <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[#1a3350] to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <p className="text-white font-bold text-lg">Pavel Levitskii</p>
-                  <p className="text-cyan-400 text-sm">Master of Sport · 10+ years coaching · 2000+ students</p>
+                  <p className="text-cyan-400 text-sm">Master of Sport · 15+ years coaching · 2000+ students</p>
                 </div>
               </div>
             </div>
@@ -229,7 +229,7 @@ export function LandingPageContent({
               </span>
             </h2>
             <p className="text-slate-400 text-lg leading-relaxed mb-10">
-              Pavel is a Master of Sport in competitive swimming, a former member of the Russian National Youth Team, and a World Cup participant. He has spent 10+ years coaching over 2,000 students in Russia, Israel, and the United States — from fearful beginners to competitive athletes.
+              Pavel is a Master of Sport in competitive swimming, a former member of the Russian National Youth Team, and a World Cup participant. He has spent 15+ years coaching over 2,000 students in Russia, Israel, and the United States — from fearful beginners to competitive athletes.
             </p>
             <p className="text-slate-400 text-lg leading-relaxed mb-10">
               His coaching philosophy centers on technique, body awareness, and confidence — not repetition for its own sake. Students who train with Pavel don't just learn to swim; they learn to feel at home in the water.
@@ -237,7 +237,7 @@ export function LandingPageContent({
 
             <div className="grid sm:grid-cols-3 gap-6 mt-10">
               {[
-                { value: "10+", label: "Years coaching" },
+                { value: "15+", label: "Years coaching" },
                 { value: "2000+", label: "Students trained" },
                 { value: "3", label: "Countries" },
               ].map((stat) => (

@@ -27,7 +27,7 @@ const ru = {
     ctaWhatsapp: "Записаться в WhatsApp",
     ctaLearnMore: "Узнать больше",
     stats: [
-      { value: "10+", label: "лет тренерства" },
+      { value: "15+", label: "лет тренерства" },
       { value: "2000+", label: "учеников" },
       { value: "3", label: "страны" },
       { value: "1:1", label: "и группы" },
@@ -41,11 +41,11 @@ const ru = {
     headingAccent: "основатель LikeSwim",
     paragraphs: [
       "Павел Левицкий — профессиональный тренер по плаванию с международным опытом работы в России, Израиле и США. Мастер спорта, многократный участник этапов FINA Swimming World Cup и бывший член юношеской сборной команды.",
-      "Более 20 лет в плавании и около 10 лет тренерской практики помогают ему находить подход как к детям, так и ко взрослым — от новичков со страхом воды до триатлетов и уверенных пловцов.",
+      "Более 20 лет в плавании и более 15 лет тренерской практики помогают ему находить подход как к детям, так и ко взрослым — от новичков со страхом воды до триатлетов и уверенных пловцов.",
       "В основе его методики — внимание к технике, психологии и индивидуальным особенностям каждого ученика. Главная цель — не просто научить человека плавать, а помочь чувствовать себя уверенно и комфортно в воде.",
     ],
     highlights: [
-      { label: "10+ лет", desc: "тренерского опыта" },
+      { label: "15+ лет", desc: "тренерского опыта" },
       { label: "2000+", desc: "учеников выпустил" },
       { label: "Мастер спорта", desc: "выполнил норматив в 15 лет" },
       { label: "3 страны", desc: "Россия, Израиль, США" },
@@ -59,7 +59,7 @@ const ru = {
     subtitle:
       "Спортивная карьера и профессиональный рост основателя LikeSwim — Павла Левицкого.",
     stats: [
-      { value: "10+", label: "лет тренерского опыта" },
+      { value: "15+", label: "лет тренерского опыта" },
       { value: "2000+", label: "учеников" },
     ],
     items: [
@@ -423,7 +423,7 @@ const en = {
     ctaWhatsapp: "Book via WhatsApp",
     ctaLearnMore: "Learn More",
     stats: [
-      { value: "10+", label: "years coaching" },
+      { value: "15+", label: "years coaching" },
       { value: "2000+", label: "students" },
       { value: "3", label: "countries" },
       { value: "1:1", label: "& groups" },
@@ -437,11 +437,11 @@ const en = {
     headingAccent: "founder of LikeSwim",
     paragraphs: [
       "Pavel Levitskii is a professional private swim coach with international experience in Russia, Israel, and the United States. A Master of Sport in swimming, multiple-time FINA Swimming World Cup competitor, and ex-member of the Russian national youth team.",
-      "With over 20 years in competitive swimming and nearly 10 years of coaching, Pavel works with everyone from fearful beginners to triathletes — delivering private swim lessons for kids and adults across South Florida.",
+      "With over 20 years in competitive swimming and more than 15 years of coaching, Pavel works with everyone from fearful beginners to triathletes — delivering private swim lessons for kids and adults across South Florida.",
       "His method focuses on technique, body awareness, and confidence in the water — not just drills. The goal is not simply to teach you to swim, but to make you feel truly at home in the water.",
     ],
     highlights: [
-      { label: "10+ years", desc: "coaching experience" },
+      { label: "15+ years", desc: "coaching experience" },
       { label: "2000+", desc: "students trained" },
       { label: "Master of Sport", desc: "certified at age 15" },
       { label: "3 countries", desc: "Russia, Israel, USA" },
@@ -455,7 +455,7 @@ const en = {
     subtitle:
       "The athletic career and professional journey of LikeSwim founder Pavel Levitskii.",
     stats: [
-      { value: "10+", label: "years of coaching experience" },
+      { value: "15+", label: "years of coaching experience" },
       { value: "2000+", label: "students trained" },
     ],
     items: [
@@ -702,7 +702,7 @@ const en = {
     items: [
       {
         q: "Who is the best swim coach in Hallandale Beach, Florida?",
-        a: "Pavel Levitskii (also written Pavel Levitskiy) is a highly rated professional swim coach serving Hallandale Beach, Florida. He holds a Russian Master of Sports title in swimming, is a multiple-time FINA Swimming World Cup competitor, and has trained over 2,000 students over more than 10 years. He offers private lessons, group sessions, triathlon training, and online coaching throughout South Florida.",
+        a: "Pavel Levitskii (also written Pavel Levitskiy) is a highly rated professional swim coach serving Hallandale Beach, Florida. He holds a Russian Master of Sports title in swimming, is a multiple-time FINA Swimming World Cup competitor, and has trained over 2,000 students over more than 15 years. He offers private lessons, group sessions, triathlon training, and online coaching throughout South Florida.",
       },
       {
         q: "How much do swimming lessons cost in Miami?",
@@ -718,7 +718,7 @@ const en = {
       },
       {
         q: "How many students has Pavel Levitskiy trained?",
-        a: "Pavel Levitskiy has trained over 2,000 students throughout more than 10 years of professional coaching — children, adults, beginners, and competitive athletes across Russia, Israel, and the United States.",
+        a: "Pavel Levitskiy has trained over 2,000 students throughout more than 15 years of professional coaching — children, adults, beginners, and competitive athletes across Russia, Israel, and the United States.",
       },
       {
         q: "Does Pavel Levitskiy travel to your pool?",
@@ -833,7 +833,7 @@ const he = {
     ctaWhatsapp: "לקביעה בווטסאפ",
     ctaLearnMore: "למידע נוסף",
     stats: [
-      { value: "10+", label: "שנות אימון" },
+      { value: "15+", label: "שנות אימון" },
       { value: "2000+", label: "תלמידים" },
       { value: "3", label: "מדינות" },
       { value: "1:1", label: "וקבוצות" },
@@ -847,11 +847,11 @@ const he = {
     headingAccent: "מייסד LikeSwim",
     paragraphs: [
       "פבל לויצקי הוא מאמן שחייה מקצועי עם ניסיון בינלאומי ברוסיה, ישראל וארצות הברית. אמן ספורט בשחייה, משתתף מרובה-פעמים ב-FINA Swimming World Cup וחבר לשעבר בנבחרת הנוער הלאומית של רוסיה.",
-      "עם יותר מ-20 שנה בשחייה תחרותית וכמעט 10 שנות אימון, פבל עובד עם כולם — ממתחילים שמפחדים ממים ועד טריאתלטים — ומעניק שיעורי שחייה פרטיים לילדים ולמבוגרים ברחבי דרום פלורידה.",
+      "עם יותר מ-20 שנה בשחייה תחרותית ויותר מ-15 שנות אימון, פבל עובד עם כולם — ממתחילים שמפחדים ממים ועד טריאתלטים — ומעניק שיעורי שחייה פרטיים לילדים ולמבוגרים ברחבי דרום פלורידה.",
       "השיטה שלו מתמקדת בטכניקה, מודעות לגוף וביטחון במים — לא רק בתרגילים. המטרה אינה רק ללמד שחייה, אלא לגרום לכם להרגיש בבית אמיתי במים.",
     ],
     highlights: [
-      { label: "10+ שנים", desc: "ניסיון באימון" },
+      { label: "15+ שנים", desc: "ניסיון באימון" },
       { label: "2000+", desc: "תלמידים הוכשרו" },
       { label: "אמן ספורט", desc: "הוסמך בגיל 15" },
       { label: "3 מדינות", desc: "רוסיה, ישראל, ארה\"ב" },
@@ -865,7 +865,7 @@ const he = {
     subtitle:
       "הקריירה הספורטיבית ומסלול ההתפתחות המקצועית של מייסד LikeSwim — פבל לויצקי.",
     stats: [
-      { value: "10+", label: "שנות ניסיון באימון" },
+      { value: "15+", label: "שנות ניסיון באימון" },
       { value: "2000+", label: "תלמידים" },
     ],
     items: [

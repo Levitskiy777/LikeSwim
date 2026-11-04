@@ -133,7 +133,7 @@ export function LandingPageContentRu({
                 <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[#1a3350] to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <p className="text-white font-bold text-lg">Павел Левицкий</p>
-                  <p className="text-cyan-400 text-sm">Мастер спорта · 10+ лет тренерства · 2000+ учеников</p>
+                  <p className="text-cyan-400 text-sm">Мастер спорта · 15+ лет тренерства · 2000+ учеников</p>
                 </div>
               </div>
             </div>
@@ -227,7 +227,7 @@ export function LandingPageContentRu({
               </span>
             </h2>
             <p className="text-slate-400 text-lg leading-relaxed mb-10">
-              Павел — Мастер спорта по плаванию, бывший член юношеской сборной России и участник Кубка мира. Более 10 лет он тренирует свыше 2000 учеников в России, Израиле и США — от новичков, боящихся воды, до соревновательных спортсменов.
+              Павел — Мастер спорта по плаванию, бывший член юношеской сборной России и участник Кубка мира. Более 15 лет он тренирует свыше 2000 учеников в России, Израиле и США — от новичков, боящихся воды, до соревновательных спортсменов.
             </p>
             <p className="text-slate-400 text-lg leading-relaxed mb-10">
               В основе его методики — техника, чувство воды и уверенность, а не механические повторения ради повторений. Ученики Павла не просто учатся плавать — они начинают чувствовать себя в воде как дома.
@@ -235,7 +235,7 @@ export function LandingPageContentRu({
 
             <div className="grid sm:grid-cols-3 gap-6 mt-10">
               {[
-                { value: "10+", label: "Лет тренерства" },
+                { value: "15+", label: "Лет тренерства" },
                 { value: "2000+", label: "Учеников подготовлено" },
                 { value: "3", label: "Страны" },
               ].map((stat) => (

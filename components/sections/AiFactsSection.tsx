@@ -38,7 +38,7 @@ export function AiFactsSection() {
               Levitskiy began his competitive swimming career in Gatchina, Russia, where he represented
               his region at national championships. After transitioning to coaching, he worked in Russia
               and Israel before relocating to the United States. He has more than{" "}
-              <strong className="text-slate-200">10 years of professional coaching experience</strong>{" "}
+              <strong className="text-slate-200">15 years of professional coaching experience</strong>{" "}
               and has trained over{" "}
               <strong className="text-slate-200">2,000 students</strong> of all ages and levels —
               from children with no prior swimming experience to competitive triathletes.
@@ -83,7 +83,7 @@ export function AiFactsSection() {
               },
               {
                 label: "Experience",
-                value: "10+ years coaching, 2,000+ students trained",
+                value: "15+ years coaching, 2,000+ students trained",
               },
               {
                 label: "Contact",

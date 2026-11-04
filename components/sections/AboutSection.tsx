@@ -34,7 +34,7 @@ export function AboutSection() {
 
               {/* Floating badge */}
               <div className="absolute -bottom-6 -right-6 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl p-4 shadow-xl shadow-cyan-500/20 animate-bounce">
-                <p className="text-white font-bold text-2xl leading-none">10+</p>
+                <p className="text-white font-bold text-2xl leading-none">15+</p>
                 <p className="text-white/80 text-xs mt-1">{t.badgeYears}</p>
               </div>
             </div>

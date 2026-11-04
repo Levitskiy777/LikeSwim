@@ -131,7 +131,7 @@ export function LandingPageContentHe({
                 <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[#1a3350] to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <p className="text-white font-bold text-lg">פבל לויצקי</p>
-                  <p className="text-cyan-400 text-sm">אמן ספורט · 10+ שנות אימון · 2000+ תלמידים</p>
+                  <p className="text-cyan-400 text-sm">אמן ספורט · 15+ שנות אימון · 2000+ תלמידים</p>
                 </div>
               </div>
             </div>
@@ -225,7 +225,7 @@ export function LandingPageContentHe({
               </span>
             </h2>
             <p className="text-slate-400 text-lg leading-relaxed mb-10">
-              פבל הוא אמן ספורט בשחייה תחרותית, לשעבר חבר נבחרת הנוער הלאומית של רוסיה ומשתתף בגביע העולם. הוא אימן יותר מ-2000 תלמידים ב-10+ שנים ברוסיה, ישראל וארצות הברית — ממתחילים מפחדי מים ועד ספורטאים תחרותיים.
+              פבל הוא אמן ספורט בשחייה תחרותית, לשעבר חבר נבחרת הנוער הלאומית של רוסיה ומשתתף בגביע העולם. הוא אימן יותר מ-2000 תלמידים ב-15+ שנים ברוסיה, ישראל וארצות הברית — ממתחילים מפחדי מים ועד ספורטאים תחרותיים.
             </p>
             <p className="text-slate-400 text-lg leading-relaxed mb-10">
               שיטת האימון שלו מתמקדת בטכניקה, מודעות לגוף וביטחון — לא בחזרות מכניות. תלמידי פבל לא רק לומדים לשחות — הם מתחילים להרגיש בבית במים.
@@ -233,7 +233,7 @@ export function LandingPageContentHe({
 
             <div className="grid sm:grid-cols-3 gap-6 mt-10">
               {[
-                { value: "10+", label: "שנות אימון" },
+                { value: "15+", label: "שנות אימון" },
                 { value: "2000+", label: "תלמידים הוכשרו" },
                 { value: "3", label: "מדינות" },
               ].map((stat) => (

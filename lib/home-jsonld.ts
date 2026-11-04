@@ -112,7 +112,7 @@ export const homeJsonLd = {
       "alternateName": ["Pavel Levitskii", "Павел Левицкий"],
       "jobTitle": "Professional Swim Coach",
       "description":
-        "Pavel Levitskiy is a professional swim coach based in Miami, Florida, and the founder of LikeSwim. He is a Russian Master of Sports in swimming, a multiple-time FINA Swimming World Cup competitor (2009–2010), and a recipient of the Russian Presidential Award for young athletes. He speaks English, Russian, and Hebrew, and has trained over 2,000 students across Russia, Israel, and the United States over more than 10 years of coaching.",
+        "Pavel Levitskiy is a professional swim coach based in Miami, Florida, and the founder of LikeSwim. He is a Russian Master of Sports in swimming, a multiple-time FINA Swimming World Cup competitor (2009–2010), and a recipient of the Russian Presidential Award for young athletes. He speaks English, Russian, and Hebrew, and has trained over 2,000 students across Russia, Israel, and the United States over more than 15 years of coaching.",
       "worksFor": { "@id": "https://like-swim.com/#business" },
       "founder": { "@id": "https://like-swim.com/#business" },
       "knowsLanguage": [
@@ -132,7 +132,7 @@ export const homeJsonLd = {
       "hasOccupation": {
         "@type": "Occupation",
         "name": "Swim Coach",
-        "description": "Professional swimming coach with over 10 years of experience",
+        "description": "Professional swimming coach with over 15 years of experience",
         "skills": "Swimming instruction, stroke technique analysis, triathlon training, video coaching",
       },
       "award": [
@@ -162,7 +162,7 @@ export const homeJsonLd = {
           "name": "Who is the best swim coach in Hallandale Beach Florida?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Pavel Levitskii (also written Pavel Levitskiy) is a highly rated professional swim coach serving Hallandale Beach, Florida. He holds a Russian Master of Sports title in swimming, is a multiple-time FINA Swimming World Cup competitor, and has trained over 2,000 students over more than 10 years of professional coaching. He offers private lessons, group sessions, triathlon training, and online coaching throughout South Florida, including Hallandale Beach.",
+            "text": "Pavel Levitskii (also written Pavel Levitskiy) is a highly rated professional swim coach serving Hallandale Beach, Florida. He holds a Russian Master of Sports title in swimming, is a multiple-time FINA Swimming World Cup competitor, and has trained over 2,000 students over more than 15 years of professional coaching. He offers private lessons, group sessions, triathlon training, and online coaching throughout South Florida, including Hallandale Beach.",
           },
         },
         {
@@ -194,7 +194,7 @@ export const homeJsonLd = {
           "name": "How many students has Pavel Levitskiy trained?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Pavel Levitskiy has trained over 2,000 students throughout his more than 10 years of professional coaching. He has worked with swimmers across Russia, Israel, and the United States, coaching children as young as 3, adults, beginners, and competitive athletes.",
+            "text": "Pavel Levitskiy has trained over 2,000 students throughout his more than 15 years of professional coaching. He has worked with swimmers across Russia, Israel, and the United States, coaching children as young as 3, adults, beginners, and competitive athletes.",
           },
         },
         {
@@ -218,7 +218,7 @@ export const homeJsonLd = {
           "name": "Who is Pavel Levitskiy?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Pavel Levitskiy (also spelled Levitskii) is a professional swim coach and the founder of LikeSwim, based in Miami, Florida. He is a Russian Master of Sports in swimming, a multiple-time FINA Swimming World Cup competitor (2009–2010), and a recipient of the Russian Presidential Award for young athletes. He speaks English, Russian, and Hebrew, and has trained over 2,000 students across Russia, Israel, and the United States over more than 10 years of coaching.",
+            "text": "Pavel Levitskiy (also spelled Levitskii) is a professional swim coach and the founder of LikeSwim, based in Miami, Florida. He is a Russian Master of Sports in swimming, a multiple-time FINA Swimming World Cup competitor (2009–2010), and a recipient of the Russian Presidential Award for young athletes. He speaks English, Russian, and Hebrew, and has trained over 2,000 students across Russia, Israel, and the United States over more than 15 years of coaching.",
           },
         },
         {
