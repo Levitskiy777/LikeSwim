@@ -31,16 +31,16 @@ export const metadata: Metadata = {
   },
   title: "Swim Lessons in Miami & Hallandale Beach | Coach Pavel Levitskii",
   description:
-    "Private swim lessons for kids, adults & triathletes in Miami, Hallandale Beach, Hollywood, Sunny Isles & Aventura, FL. Overcome fear of water. First lesson 50% off.",
+    "Mobile private swim coach who comes to your pool in Miami, Hallandale Beach, Sunny Isles, Aventura & Boca Raton, FL. Lessons in English, Russian & Hebrew. First lesson 50% off.",
   keywords:
-    "swim coach Miami, swimming lessons Miami, swim lessons Hallandale Beach, private swim lessons kids, adult swimming lessons Miami, triathlon swim training Miami, fear of water, LikeSwim, Pavel Levitskii",
+    "mobile swim instructor Miami, swim lessons at home Miami, Russian speaking swim coach Miami, swim coach Miami, swimming lessons Miami, swim lessons Hallandale Beach, private swim lessons kids, adult swimming lessons Miami, triathlon swim training Miami, fear of water, LikeSwim, Pavel Levitskii, Pavel Levitskiy, Pavel Levitsky",
   verification: {
     google: "yudm-axtEfoSJrX5I6R_3KG4mcSpwWuo7rgqsCiTxVE",
   },
   openGraph: {
     title: "Swim Lessons in Miami & Hallandale Beach | Coach Pavel Levitskii",
     description:
-      "Private swim lessons for kids, adults & triathletes in Miami, Hallandale Beach, Hollywood, Sunny Isles & Aventura, FL. First lesson 50% off.",
+      "Mobile private swim coach who comes to your pool in Miami, Hallandale Beach, Sunny Isles, Aventura & Boca Raton. English, Russian & Hebrew. First lesson 50% off.",
     type: "website",
     locale: "en_US",
     images: [

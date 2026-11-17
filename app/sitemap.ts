@@ -11,7 +11,7 @@ const BASE = "https://like-swim.com";
 // the site — don't switch it back to `new Date()`, which would mark
 // every page "changed" on every single deploy and erode Google's trust
 // in this field.
-const SITE_UPDATED = new Date("2026-11-04");
+const SITE_UPDATED = new Date("2026-11-16");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [
@@ -48,6 +48,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     })),
     // ── EN Blog ───────────────────────────────────────────────────────
+    {
+      url: `${BASE}/en/blog`,
+      lastModified: SITE_UPDATED,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
     ...blogPostsEn.map((post) => ({
       url: `${BASE}/en/blog/${post.slug}`,
       lastModified: new Date(post.date),

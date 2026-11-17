@@ -3,11 +3,11 @@ import { LanguageSetter } from "@/components/landing/LanguageSetter";
 import { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: "Тренер по плаванию в Майами | Pavel Levitskii | LikeSwim",
+  title: "Тренер по плаванию с выездом в Майами | Павел Левицкий | LikeSwim",
   description:
-    "Профессиональный тренер по плаванию в Майами. Индивидуальные уроки для детей, взрослых и триатлетов. Hallandale Beach, Hollywood, Sunny Isles. Первое занятие со скидкой 50%.",
+    "Русскоязычный тренер по плаванию с выездом к вашему бассейну — Майами, Санни-Айлс, Авентура, Холландейл, Голливуд, Бока-Ратон. Уроки для детей и взрослых. Первое занятие −50%.",
   keywords:
-    "тренер по плаванию Майами, уроки плавания Майами, swim coach Miami, swim lessons Miami, swimming lessons Hallandale, тренер плавание Флорида, LikeSwim, Павел Левицкий",
+    "тренер по плаванию с выездом, русскоязычный тренер по плаванию Майами, тренер по плаванию на дом, тренер по плаванию Майами, уроки плавания Майами, swim coach Miami, swim lessons Miami, swimming lessons Hallandale, тренер плавание Флорида, LikeSwim, Павел Левицкий",
   alternates: {
     canonical: "/ru",
     languages: {
@@ -18,9 +18,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Тренер по плаванию в Майами | Pavel Levitskii | LikeSwim",
+    title: "Тренер по плаванию с выездом в Майами | Павел Левицкий | LikeSwim",
     description:
-      "Профессиональный тренер по плаванию в Майами. Индивидуальные уроки для детей, взрослых и триатлетов. Hallandale Beach, Hollywood, Sunny Isles. Первое занятие со скидкой 50%.",
+      "Русскоязычный тренер по плаванию с выездом к вашему бассейну — Майами, Санни-Айлс, Авентура, Холландейл, Голливуд, Бока-Ратон. Уроки для детей и взрослых. Первое занятие −50%.",
     type: "website",
     locale: "ru_RU",
     images: [

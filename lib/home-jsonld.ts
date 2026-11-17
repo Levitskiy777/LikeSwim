@@ -80,7 +80,10 @@ export const homeJsonLd = {
           },
         ],
       },
+      "knowsLanguage": ["en", "ru", "he"],
+      "slogan": "Mobile swim coach — we come to your pool",
       "serviceType": [
+        "Mobile Swim Lessons (coach travels to your pool)",
         "Private Swim Lessons",
         "Group Swimming Lessons",
         "Triathlon Swim Training",
@@ -109,7 +112,7 @@ export const homeJsonLd = {
       "@type": "Person",
       "@id": "https://like-swim.com/#person",
       "name": "Pavel Levitskiy",
-      "alternateName": ["Pavel Levitskii", "Павел Левицкий"],
+      "alternateName": ["Pavel Levitskii", "Pavel Levitsky", "Павел Левицкий"],
       "jobTitle": "Professional Swim Coach",
       "description":
         "Pavel Levitskiy is a professional swim coach based in Miami, Florida, and the founder of LikeSwim. He is a Russian Master of Sports in swimming, a multiple-time FINA Swimming World Cup competitor (2009–2010), and a recipient of the Russian Presidential Award for young athletes. He speaks English, Russian, and Hebrew, and has trained over 2,000 students across Russia, Israel, and the United States over more than 15 years of coaching.",
