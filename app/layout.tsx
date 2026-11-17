@@ -35,7 +35,10 @@ export const metadata: Metadata = {
   keywords:
     "mobile swim instructor Miami, swim lessons at home Miami, Russian speaking swim coach Miami, swim coach Miami, swimming lessons Miami, swim lessons Hallandale Beach, private swim lessons kids, adult swimming lessons Miami, triathlon swim training Miami, fear of water, LikeSwim, Pavel Levitskii, Pavel Levitskiy, Pavel Levitsky",
   verification: {
-    google: "yudm-axtEfoSJrX5I6R_3KG4mcSpwWuo7rgqsCiTxVE",
+    google: [
+      "yudm-axtEfoSJrX5I6R_3KG4mcSpwWuo7rgqsCiTxVE",
+      "iM1ZwuTKkIPTqypw2FMrDW4QXiYioYMBDIO91GjA3tw",
+    ],
   },
   openGraph: {
     title: "Swim Lessons in Miami & Hallandale Beach | Coach Pavel Levitskii",
