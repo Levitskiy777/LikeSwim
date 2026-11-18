@@ -37,6 +37,7 @@ export default function Home() {
           <p className="text-slate-500 text-sm mb-4 text-center">Popular lesson pages</p>
           <div className="flex flex-wrap justify-center gap-3">
             {[
+              { href: "/en/adult-swim-lessons", label: "Adult Swim Lessons — Miami" },
               { href: "/en/hallandale-beach/private-swimming-lessons-kids", label: "Private Swim Lessons — Hallandale Beach" },
               { href: "/en/miami/private-swimming-lessons-kids", label: "Private Swim Lessons — Miami" },
               { href: "/en/sunny-isles-beach/private-swimming-lessons-kids", label: "Private Swim Lessons — Sunny Isles Beach" },

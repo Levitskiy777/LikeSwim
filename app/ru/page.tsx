@@ -31,6 +31,7 @@ export default function RuHomePage() {
           <p className="text-slate-500 text-sm mb-4 text-center">Популярные страницы услуг</p>
           <div className="flex flex-wrap justify-center gap-3">
             {[
+              { href: "/ru/plavanie-dlya-vzroslyh", label: "Плавание для взрослых — Майами" },
               { href: "/ru/hallandale-beach/private-swimming-lessons-kids", label: "Инд. уроки плавания — Халландейл-Бич" },
               { href: "/ru/miami/private-swimming-lessons-kids", label: "Инд. уроки плавания — Майами" },
               { href: "/ru/sunny-isles-beach/private-swimming-lessons-kids", label: "Инд. уроки плавания — Санни-Айлс-Бич" },

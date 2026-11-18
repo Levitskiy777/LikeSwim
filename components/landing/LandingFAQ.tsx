@@ -29,9 +29,12 @@ function FAQRow({ item }: { item: FAQItem }) {
           className={`w-5 h-5 shrink-0 text-slate-500 group-hover:text-slate-300 transition-all duration-200 ${open ? "rotate-180" : ""}`}
         />
       </button>
-      {open && (
-        <p className="px-6 pb-5 text-slate-400 leading-relaxed text-sm">{item.a}</p>
-      )}
+      {/* Answer is always in the HTML (for Google), collapsed with CSS */}
+      <div className={`grid transition-all duration-200 ease-in-out ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+        <div className="overflow-hidden">
+          <p className="px-6 pb-5 text-slate-400 leading-relaxed text-sm">{item.a}</p>
+        </div>
+      </div>
     </div>
   );
 }

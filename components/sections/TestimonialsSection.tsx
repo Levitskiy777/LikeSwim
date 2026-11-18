@@ -50,6 +50,12 @@ const testimonials = [
   },
 ];
 
+const GOOGLE_LABEL = {
+  ru: "Рейтинг 5.0 в Google — читать все отзывы",
+  en: "5.0 rating on Google — read all reviews",
+  he: "דירוג 5.0 בגוגל — לכל הביקורות",
+} as const;
+
 function StarRating({ rating }: { rating: number }) {
   return (
     <div className="flex gap-0.5">
@@ -87,6 +93,17 @@ export function TestimonialsSection() {
           </FadeIn>
           <FadeIn delay={0.2}>
             <p className="text-slate-500 max-w-xl mx-auto text-lg">{t.subtitle}</p>
+          </FadeIn>
+          <FadeIn delay={0.25}>
+            <a
+              href="https://www.google.com/maps?cid=17543475843356755415"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 mt-6 px-4 py-2 rounded-full border border-white/10 bg-white/[0.03] text-slate-300 text-sm hover:text-cyan-300 hover:border-cyan-500/30 transition-colors"
+            >
+              <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+              {GOOGLE_LABEL[lang]}
+            </a>
           </FadeIn>
         </div>
 

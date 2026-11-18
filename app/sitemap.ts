@@ -11,7 +11,7 @@ const BASE = "https://like-swim.com";
 // the site — don't switch it back to `new Date()`, which would mark
 // every page "changed" on every single deploy and erode Google's trust
 // in this field.
-const SITE_UPDATED = new Date("2026-11-16");
+const SITE_UPDATED = new Date("2026-11-18");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [
@@ -47,6 +47,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
+    // ── Adult lessons pages ───────────────────────────────────────────
+    {
+      url: `${BASE}/en/adult-swim-lessons`,
+      lastModified: SITE_UPDATED,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE}/ru/plavanie-dlya-vzroslyh`,
+      lastModified: SITE_UPDATED,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
     // ── EN Blog ───────────────────────────────────────────────────────
     {
       url: `${BASE}/en/blog`,
